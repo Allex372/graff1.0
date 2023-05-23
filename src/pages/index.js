@@ -44,22 +44,22 @@ const IndexPage = () => {
             <SliderContextProvide>
               <BaseLayout>
                 <AboutUs />
-                {/* <div className={styles.lineWrapper}>
+                <div className={styles.lineWrapper}>
                   <GradientLine />
-                </div> 
+                </div>
                 <Ladies />
-                {/* <div className={styles.lineWrapper}>
+                <div className={styles.lineWrapper}>
                   <GradientLine />
-                </div> 
+                </div>
                 <Services />
-                {/* <div className={styles.lineWrapper}>
+                <div className={styles.lineWrapper}>
                   <GradientLine />
-                </div> 
+                </div>
                 <InterierGalery />
-                {/* <div className={styles.lineWrapper}>
+                <div className={styles.lineWrapper}>
                   <GradientLine />
-                </div> 
-                <Rules />*/}
+                </div>
+                <Rules />
 
               </BaseLayout>
             </SliderContextProvide>

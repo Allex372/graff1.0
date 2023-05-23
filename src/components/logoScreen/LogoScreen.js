@@ -32,6 +32,16 @@ const LogoScreen = () => {
         setIsOpen(!isOpen);
     }
 
+    const handleChangeLanguage = (languageToChange) => {
+        if (languageToChange === 'en') {
+            setEN('en');
+            setIsMenuClose(true);
+        } else {
+            setUA('ua');
+            setIsMenuClose(true);
+        }
+    }
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.languages}>
@@ -128,14 +138,14 @@ const LogoScreen = () => {
                         <div className={styles.mobilelanguages}>
                             <span
                                 className={language === 'ua' && `${styles.active}`}
-                                onClick={() => setEN('ua')}
+                                onClick={() => handleChangeLanguage('ua')}
                             >
                                 UA
                             </span>
                             <span>/</span>
                             <span
                                 className={language === 'en' && `${styles.active}`}
-                                onClick={() => setUA('en')}
+                                onClick={() => handleChangeLanguage('en')}
                             >
                                 EN
                             </span>

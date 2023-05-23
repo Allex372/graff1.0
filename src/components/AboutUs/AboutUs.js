@@ -5,6 +5,7 @@ import CircularProgress from '@mui/joy/CircularProgress';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
+import { getLocalizedText } from '../helpers/translator';
 import { useLanguage } from '../../context/languageContext';
 
 import * as styles from './About_us.module.css';
@@ -12,7 +13,7 @@ import * as styles from './About_us.module.css';
 const AboutUs = () => {
     const { language } = useLanguage();
 
-    const { isLoading, data } = useQuery(
+    const { isLoading, isFetching, data } = useQuery(
         'repoData',
         () =>
             axios.get(
@@ -33,11 +34,11 @@ const AboutUs = () => {
 
     const Abouts = useMemo(() => (data ? data : []), [data]);
 
-    const getLocalizedText = (loc, text) => {
-        return language === 'en' ? loc.attributes.text : text;
-    };
+
+    if (isLoading || isFetching) return <CircularProgress color="neutral" className={styles.CircularProgress} />
 
     if (!isLoading && Abouts?.data?.length > 0) {
+
         const { image, localizations, text } = Abouts?.data?.[0]?.attributes;
 
         return (
@@ -55,24 +56,18 @@ const AboutUs = () => {
                         </div>
                         <div className={styles.textWrapper}>
                             <p className={styles.descriptionTitle}>«Graff»</p>
-                            {localizations?.data?.map((loc, index) => (
-                                <p key={index} className={styles.description}>{getLocalizedText(loc, text)}</p>
-                            ))}
+                            {localizations?.data?.map((loc, index) => {
+                                const { text: textEn } = loc.attributes;
+                                return (
+                                    <p key={index} className={styles.description}>{getLocalizedText(language, textEn, text)}</p>
+                                )
+                            })}
                         </div>
                     </div>
                 </div>
             </>
         );
     }
-
-    if (isLoading)
-        return (
-            <CircularProgress
-                color="neutral"
-                className={styles.CircularProgress}
-            />
-        );
-    return null;
 };
 
 export default AboutUs;

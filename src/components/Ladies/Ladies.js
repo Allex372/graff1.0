@@ -1,10 +1,12 @@
 import React from "react"
 import { useState, useMemo } from 'react';
 import { useQuery } from 'react-query';
+import axios from "axios";
 import CircularProgress from '@mui/joy/CircularProgress';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
+import { getLocalizedText } from '../helpers/translator';
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // Import Swiper styles
@@ -26,15 +28,19 @@ const Ladies = () => {
     const { isLoading, isFetching, data } = useQuery(
         'modelData',
         () =>
-            fetch(
-                'https://whispering-shore-87525.herokuapp.com/api/models?populate=*', {
-                headers: {
-                    Authorization: 'Bearer a841dc75e9e097f8d4c9c8f9ee35ccd2a04a38d43c93a0162b962bb0059715d700cd888f1da1907c16c48e2e2e927c3ed2b73d026366116b1de8adfb879dd78cb0737ccc3a44ba5e348c4ab9d8b1e47257d59809be54bc488c62f59888e6137347f49721b85199f9881f57fe1d0bba33407d82410ded87aa8432639b84404224',
-                },
-            }
-            ).then((response) => response.json()),
+            axios.get(
+                'https://whispering-shore-87525.herokuapp.com/api/models?populate=*',
+                {
+                    headers: {
+                        Authorization:
+                            'Bearer a841dc75e9e097f8d4c9c8f9ee35ccd2a04a38d43c93a0162b962bb0059715d700cd888f1da1907c16c48e2e2e927c3ed2b73d026366116b1de8adfb879dd78cb0737ccc3a44ba5e348c4ab9d8b1e47257d59809be54bc488c62f59888e6137347f49721b85199f9881f57fe1d0bba33407d82410ded87aa8432639b84404224',
+                    },
+                }
+            ).then(response => response.data),
         {
-            refetchOnWindowFocus: false
+            refetchOnWindowFocus: false,
+            staleTime: 120000,
+            cacheTime: 600000,
         }
     );
 
@@ -61,20 +67,22 @@ const Ladies = () => {
                 <div className={styles.cardWrapper}>
                     {Models?.data?.map((ladie) => {
                         const { name, image, localizations } = ladie.attributes;
+                        const { url } = image?.data?.[0]?.attributes;
                         return (
                             <div className={styles.card} key={ladie.id}>
                                 <div className={styles.content}>
                                     <div className={styles.imgBx} onClick={() => handleOpenDialog(image)}>
-                                        <img src={image?.data[0]?.attributes?.url} alt={name} effect="blur" className={styles.image} />
+                                        <LazyLoadImage src={url} alt={name} className={styles.image} />
                                     </div>
                                 </div>
 
                                 <ul className={styles.sci}>
                                     <li>
                                         {localizations.data.map((loc, index) => {
+                                            const { name: nameEn } = loc.attributes
                                             return (
                                                 <p className={styles.ladyText} key={index}>
-                                                    {language === 'en' ? loc.attributes.name : name}
+                                                    {getLocalizedText(language, nameEn, name)}
                                                 </p>
                                             )
                                         })}
@@ -94,21 +102,23 @@ const Ladies = () => {
                 >
                     {Models?.data?.map((ladie) => {
                         const { name, image, localizations } = ladie.attributes;
+                        const { url } = image?.data?.[0]?.attributes;
                         return (
                             <SwiperSlide key={ladie.id}>
                                 <div className={styles.card}>
                                     <div className={styles.content}>
                                         <div className={styles.imgBx} onClick={() => handleOpenDialog(image)}>
-                                            <LazyLoadImage src={image?.data[0]?.attributes?.url} alt={name} className={styles.image} />
+                                            <LazyLoadImage src={url} alt={name} className={styles.image} />
                                         </div>
                                     </div>
 
                                     <ul className={styles.sci}>
                                         <li>
                                             {localizations.data.map((loc, index) => {
+                                                const { name: nameEn } = loc.attributes
                                                 return (
                                                     <p className={styles.ladyText} key={index}>
-                                                        {language === 'en' ? loc.attributes.name : name}
+                                                        {getLocalizedText(language, nameEn, name)}
                                                     </p>
                                                 )
                                             })}

@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Pagination, Navigation } from 'swiper';
 import { useSliderIndex } from "../../context/sliderConext";
 import { useLanguage } from "../../context/languageContext";
+import { getLocalizedText } from '../helpers/translator';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
@@ -67,11 +68,15 @@ const SwiperCarousel = ({ array, isService, isInterier, isModels }) => {
                                         className={styles.image}
                                     />
                                 </div>
-                                {localizations.data.map((loc, index) => (
-                                    <p className={styles.title} key={index}>
-                                        {language === 'en' ? loc.attributes.title : title}
-                                    </p>
-                                ))}
+                                {localizations.data.map((loc, index) => {
+                                    const { title: titleEn } = loc.attributes
+                                    return (
+                                        <p className={styles.title} key={index}>
+                                            {getLocalizedText(language, titleEn, title)}
+                                        </p>
+                                    )
+                                }
+                                )}
                                 <div onClick={() => handleScroll()}>
                                     <Link to={`/${service.id}`} className={styles.link}>{t('readMore')} -&gt;</Link>
                                 </div>
@@ -147,7 +152,7 @@ const SwiperCarousel = ({ array, isService, isInterier, isModels }) => {
             modules={[EffectCoverflow, Pagination, Navigation]}
             className={styles.swiperContainer}
         >
-            {array?.data?.map((data, index) => {
+            {array?.data?.map((data) => {
                 return (
                     <SwiperSlide key={data?.id} className={styles.swiperSlide}>
                         <LazyLoadImage

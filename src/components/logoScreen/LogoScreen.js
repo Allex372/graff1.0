@@ -68,7 +68,7 @@ const LogoScreen = () => {
                         </div>
                     }
                     <div className={styles.menuIcon} style={{ zIndex: isOpen && '2' }} onClick={() => handleOpenMobileMenu()}>
-                        {isOpen ? <StaticImage src='../../images/close-icon.png' alt="close" /> : <StaticImage src='../../images/menu-icon.png' alt='open' />}
+                        {isOpen ? <StaticImage src='../../images/close-icon.png' alt="close" height={20} width={20} /> : <StaticImage src='../../images/menu-icon.png' alt='open' height={20} width={20} />}
                     </div>
                 </div>
                 <div className={styles.contactWrapper}>

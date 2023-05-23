@@ -61,7 +61,7 @@ const SwiperCarousel = ({ array, isService, isInterier, isModels }) => {
                         <SwiperSlide className={styles.swiperSlide} key={service.id}>
                             <div className={styles.cardWrapper}>
                                 <div className={styles.imageWrapper}>
-                                    <LazyLoadImage
+                                    <img
                                         src={image?.data?.attributes?.url}
                                         alt={title}
                                         effect="blur"
@@ -116,7 +116,7 @@ const SwiperCarousel = ({ array, isService, isInterier, isModels }) => {
             {array?.map((image, id) => {
                 return (
                     <SwiperSlide key={id} className={styles.swiperSlide}>
-                        <LazyLoadImage
+                        <img
                             src={image?.attributes?.url}
                             alt="slide_image"
                             effect="blur"
@@ -155,7 +155,7 @@ const SwiperCarousel = ({ array, isService, isInterier, isModels }) => {
             {array?.data?.map((data) => {
                 return (
                     <SwiperSlide key={data?.id} className={styles.swiperSlide}>
-                        <LazyLoadImage
+                        <img
                             src={data?.attributes?.url}
                             alt="galery"
                             effect="blur"

@@ -1,10 +1,12 @@
 const path = require('path');
+const Token = 'bcfef643dcc1c5aca290f8b18206764070ad5d55308cbfabfa350a13ca4e0b385ec051029739afa52617fbc3ed09b0ba0c42705f29cdef53b40c0d113ebae0cb833fcf55abe126da949a0a2ca44d72db550778241fa7918ac492ee51bcfb089958ef90defd0f3aa6cc63616a7bd3100a860532085c1a5b25e3550e87b35e9b68'
 
 exports.createPages = async ({ actions }) => {
     try {
         const response = await fetch('https://whispering-shore-87525.herokuapp.com/api/services?populate=*', {
             headers: {
-                Authorization: 'Bearer a841dc75e9e097f8d4c9c8f9ee35ccd2a04a38d43c93a0162b962bb0059715d700cd888f1da1907c16c48e2e2e927c3ed2b73d026366116b1de8adfb879dd78cb0737ccc3a44ba5e348c4ab9d8b1e47257d59809be54bc488c62f59888e6137347f49721b85199f9881f57fe1d0bba33407d82410ded87aa8432639b84404224',
+                Authorization:
+                    `Bearer ${Token}`,
             },
         });
 

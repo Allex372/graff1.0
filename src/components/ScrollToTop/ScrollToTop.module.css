@@ -1,0 +1,23 @@
+.menuIcon {
+    cursor: pointer;
+    bottom: 40px;
+    position: fixed;
+    right: 15px;
+    transform: rotate(90deg);
+    z-index: 10;
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 35px;
+    width: 35px;
+    margin-right: 16px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+        radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+}
+
+.menuIcon img {
+    width: 25px;
+    height: 25px;
+}

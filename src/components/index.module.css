@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,600&family=Raleway:wght@300;600&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.mainWrapper {
+  height: 100%;
+  background-image: url('../images/bg.jpg');
+  background-size: contain;
+}
+
+.lineWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+html {
+  background: black;
+}

@@ -1,0 +1,40 @@
+.wrapper {
+    padding-top: 36px;
+}
+
+.links {
+    text-decoration: none;
+}
+
+.listWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.listWrapper li {
+    cursor: pointer;
+    list-style: none;
+    color: white;
+    font-size: 20px;
+    font-family: 'Playfair Display', serif;
+    background-color: black;
+}
+
+.listWrapper li:hover {
+    background: #FDB931;
+    background-clip: text;
+    transition: 0.3s;
+    -webkit-text-fill-color: transparent;
+}
+
+@media screen and (max-width: 768px) {
+    .listWrapper {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .listWrapper li {
+        font-size: 26px;
+    }
+}

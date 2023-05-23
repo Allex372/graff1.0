@@ -1,0 +1,59 @@
+.wrapper {
+    width: 100%;
+    margin-top: 32px;
+    background-color: black;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 50px;
+}
+
+.title {
+    margin-top: 8px;
+    font-family: 'Playfair Display', sans-serif;
+    letter-spacing: 8px;
+    font-size: 46px;
+    color: #FDB931;
+    text-align: center;
+}
+
+.infoWrapper {
+    padding: 64px 24px 0 24px;
+}
+
+.text {
+    font-size: 24px;
+    font-family: 'Raleway', serif;
+    line-height: 32px;
+}
+
+.textPlayfair {
+    font-size: 24px;
+    font-family: 'Playfair Display', serif;
+    line-height: 32px;
+    margin-top: 8px;
+}
+
+.rulesList {
+    margin-top: 16px;
+    margin-left: 24px;
+    list-style: none;
+}
+
+.rulesList li::before {
+    content: "\2022";
+    background: linear-gradient(to bottom, #cfc09f 22%, #634f2c 24%, #cfc09f 26%, #cfc09f 27%, #ffecb3 40%, #3a2c0f 78%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+@media screen and (max-width: 768px) {
+    .infoWrapper {
+        padding: 64px 12px 0 12px;
+    }
+}

@@ -1,0 +1,30 @@
+.wrapper {
+    width: 100%;
+    margin-top: 32px;
+    background-color: black;
+    color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title {
+    margin-top: 8px;
+    font-family: 'Playfair Display', sans-serif;
+    letter-spacing: 8px;
+    font-size: 46px;
+    color: #FDB931;
+    text-align: center;
+}
+
+.container {
+    width: 100%;
+    padding: 4rem 1rem;
+    margin: 0 auto;
+}
+
+.heading {
+    padding: 1rem 0;
+    font-size: 3.5rem;
+    text-align: center;
+}

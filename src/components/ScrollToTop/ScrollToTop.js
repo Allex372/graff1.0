@@ -29,7 +29,7 @@ const ScrollToTop = ({ showBelow }) => {
         <>
             {show && (
                 <div className={styles.menuIcon} onClick={handleClick}>
-                    <StaticImage src='../../images/arrow-left.png' alt="back" />
+                    <StaticImage src='../../images/arrow-left.png' alt="back" height={20} width={20} />
                 </div>
             )}
         </>

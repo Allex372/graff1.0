@@ -7,6 +7,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import Token from "../constants/constants";
+import Seo from "../seo";
 import { getLocalizedText } from '../helpers/translator';
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -62,54 +63,20 @@ const Ladies = () => {
     if (isLoading || isFetching) return <CircularProgress color="neutral" className={styles.CircularProgress} />
 
     return (
-        <div className={styles.wrapper} id="ladies">
-            <p className={styles.title}>{t('ladies')}</p>
-            <div className={styles.flexWrapper}>
-                <div className={styles.cardWrapper}>
-                    {Models?.data?.map((ladie) => {
-                        const { name, image, localizations } = ladie.attributes;
-                        const { url } = image?.data?.[0]?.attributes;
-                        return (
-                            <div className={styles.card} key={ladie.id}>
-                                <div className={styles.content}>
-                                    <div className={styles.imgBx} onClick={() => handleOpenDialog(image)}>
-                                        <LazyLoadImage src={url} alt={name} className={styles.image} />
-                                    </div>
-                                </div>
-
-                                <ul className={styles.sci}>
-                                    <li>
-                                        {localizations.data.map((loc, index) => {
-                                            const { name: nameEn } = loc.attributes
-                                            return (
-                                                <p className={styles.ladyText} key={index}>
-                                                    {getLocalizedText(language, nameEn, name)}
-                                                </p>
-                                            )
-                                        })}
-                                    </li>
-                                </ul>
-                            </div>
-                        )
-                    })}
-                </div>
-            </div>
-            <div className={styles.mobileSlides}>
-                <Swiper
-                    effect={"cards"}
-                    grabCursor={true}
-                    modules={[EffectCards]}
-                    className="mySwiper"
-                >
-                    {Models?.data?.map((ladie) => {
-                        const { name, image, localizations } = ladie.attributes;
-                        const { url } = image?.data?.[0]?.attributes;
-                        return (
-                            <SwiperSlide key={ladie.id}>
-                                <div className={styles.card}>
+        <>
+            <Seo title="Graff - салон еротичного масажу у Львові, найкращі дівчата" />
+            <div className={styles.wrapper} id="ladies">
+                <p className={styles.title}>{t('ladies')}</p>
+                <div className={styles.flexWrapper}>
+                    <div className={styles.cardWrapper}>
+                        {Models?.data?.map((ladie) => {
+                            const { name, image, localizations } = ladie.attributes;
+                            const { url } = image?.data?.[0]?.attributes;
+                            return (
+                                <div className={styles.card} key={ladie.id}>
                                     <div className={styles.content}>
                                         <div className={styles.imgBx} onClick={() => handleOpenDialog(image)}>
-                                            <LazyLoadImage src={url} alt={name} className={styles.image} />
+                                            <LazyLoadImage src={url} alt="Graff - салон еротичного масажу, наші дівчата" className={styles.image} />
                                         </div>
                                     </div>
 
@@ -126,13 +93,50 @@ const Ladies = () => {
                                         </li>
                                     </ul>
                                 </div>
-                            </SwiperSlide>
-                        )
-                    })}
-                </Swiper>
+                            )
+                        })}
+                    </div>
+                </div>
+                <div className={styles.mobileSlides}>
+                    <Swiper
+                        effect={"cards"}
+                        grabCursor={true}
+                        modules={[EffectCards]}
+                        className="mySwiper"
+                    >
+                        {Models?.data?.map((ladie) => {
+                            const { name, image, localizations } = ladie.attributes;
+                            const { url } = image?.data?.[0]?.attributes;
+                            return (
+                                <SwiperSlide key={ladie.id}>
+                                    <div className={styles.card}>
+                                        <div className={styles.content}>
+                                            <div className={styles.imgBx} onClick={() => handleOpenDialog(image)}>
+                                                <LazyLoadImage src={url} alt="Graff - салон еротичного масажу, наші дівчата" className={styles.image} />
+                                            </div>
+                                        </div>
+
+                                        <ul className={styles.sci}>
+                                            <li>
+                                                {localizations.data.map((loc, index) => {
+                                                    const { name: nameEn } = loc.attributes
+                                                    return (
+                                                        <p className={styles.ladyText} key={index}>
+                                                            {getLocalizedText(language, nameEn, name)}
+                                                        </p>
+                                                    )
+                                                })}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </SwiperSlide>
+                            )
+                        })}
+                    </Swiper>
+                </div>
+                <ModelsDialog isModels={true} isOpenDialog={openDialog} handleClose={() => handleCloseDialog()} imagesArray={arr.length >= 1 && arr} />
             </div>
-            <ModelsDialog isModels={true} isOpenDialog={openDialog} handleClose={() => handleCloseDialog()} imagesArray={arr.length >= 1 && arr} />
-        </div>
+        </>
     )
 }
 

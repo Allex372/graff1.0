@@ -12,6 +12,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import Token from "../components/constants/constants";
+import Seo from "../components/seo";
 import { getLocalizedText } from '../components/helpers/translator';
 import { useLanguage } from "../context/languageContext";
 import LanguageProvider from '../context/languageContext';
@@ -49,32 +50,35 @@ const SingleService = ({ pageContext: { id } }) => {
     const { url } = image?.data?.attributes;
 
     return (
-      <div className={styles.bg}>
-        <div className={styles.menuIcon} onClick={() => navigate(-1)}>
-          <StaticImage height={20} width={20} alt="back" src='../images/arrow-left.png' />
-        </div>
-        <div className={styles.infoWrapper}>
-          <LazyLoadImage
-            src={url}
-            alt={title}
-            effect="blur"
-            className={styles.image}
-          />
-          <div className={styles.imageWrapper}>
+      <>
+        <Seo title="Graff - салон еротичного масажу у Львові, найкращі послуги" />
+        <div className={styles.bg}>
+          <div className={styles.menuIcon} onClick={() => navigate(-1)}>
+            <StaticImage height={20} width={20} alt="back" src='../images/arrow-left.png' />
           </div>
-          {localizations?.data?.map((loc, index) => {
-            const { title: titleEn, text: textEn } = loc?.attributes;
-            return (
-              <React.Fragment key={index}>
-                <p className={styles.title}>
-                  {getLocalizedText(language, titleEn, title)}
-                </p>
-                <p className={styles.description}>{getLocalizedText(language, textEn, text)}</p>
-              </React.Fragment>
-            )
-          })}
-        </div>
-      </div >
+          <div className={styles.infoWrapper}>
+            <LazyLoadImage
+              src={url}
+              alt="Graff салон еротичного масажу, послуги"
+              effect="blur"
+              className={styles.image}
+            />
+            <div className={styles.imageWrapper}>
+            </div>
+            {localizations?.data?.map((loc, index) => {
+              const { title: titleEn, text: textEn } = loc?.attributes;
+              return (
+                <React.Fragment key={index}>
+                  <p className={styles.title}>
+                    {getLocalizedText(language, titleEn, title)}
+                  </p>
+                  <p className={styles.description}>{getLocalizedText(language, textEn, text)}</p>
+                </React.Fragment>
+              )
+            })}
+          </div>
+        </div >
+      </>
     )
   }
 }

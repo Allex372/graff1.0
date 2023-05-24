@@ -1,6 +1,7 @@
 import React from "react"
 import { AnchorLink } from "gatsby-plugin-anchor-links";
 
+import Seo from "../seo";
 import { useLanguage } from '../../context/languageContext';
 import { useSideMenuOpen } from "../../context/sideMenuContext";
 
@@ -16,6 +17,8 @@ const NavigationItems = () => {
   }
   return (
     <header className={styles.wrapper}>
+      <Seo title="Graff - салон еротичного масажу у Львові" />
+
       <ul className={styles.listWrapper}>
 
         <div onClick={() => handleLinkClicked()}>

@@ -4,8 +4,9 @@ import axios from 'axios';
 import CircularProgress from '@mui/joy/CircularProgress';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-import Token from "../constants/constants";
 
+import Seo from "../seo";
+import Token from "../constants/constants";
 import { getLocalizedText } from '../helpers/translator';
 import { useLanguage } from '../../context/languageContext';
 
@@ -44,6 +45,7 @@ const AboutUs = () => {
 
         return (
             <>
+                <Seo title="Graff - найкращий салон еротичного масажу у Львові" />
                 <div id="about" className={styles.wrapper}>
                     <div className={styles.infoWrapper}>
                         <div className={styles.infoImgWrapper}>
@@ -72,3 +74,4 @@ const AboutUs = () => {
 };
 
 export default AboutUs;
+

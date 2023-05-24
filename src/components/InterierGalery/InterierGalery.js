@@ -6,6 +6,7 @@ import axios from "axios";
 
 import Token from "../constants/constants";
 import SwiperCarousel from "../Swiper/Swiper";
+import Seo from "../seo";
 import { useLanguage } from "../../context/languageContext";
 
 import 'swiper/css';
@@ -45,14 +46,18 @@ const InterierGalery = () => {
     if (!isLoading && Interiers?.data?.length > 0) {
         const { image } = Interiers?.data?.[0]?.attributes;
         return (
-            <div className={styles.wrapper} id="galery">
-                <p className={styles.title}>{t('interior')}</p>
-                <div className={styles.container}>
-                    <SwiperCarousel array={image} isInterier={true} />
+            <>
+                <Seo title="Graff - салон еротичного масажу у Львові, інтер`єр" />
+                <div className={styles.wrapper} id="galery">
+                    <p className={styles.title}>{t('interior')}</p>
+                    <div className={styles.container}>
+                        <SwiperCarousel array={image} isInterier={true} />
+                    </div >
                 </div >
-            </div >
+            </>
         )
     }
 }
 
 export default InterierGalery;
+

@@ -5,6 +5,7 @@ import axios from "axios";
 
 import Token from "../constants/constants";
 import SwiperCarousel from "../Swiper/Swiper";
+import Seo from "../seo";
 import { useLanguage } from "../../context/languageContext";
 import PricingTable from "./PriceTable/PrisingTable";
 import * as styles from './Services.module.css';
@@ -43,17 +44,21 @@ const Services = () => {
   if (isLoading || isFetching) return <CircularProgress color="neutral" className={styles.CircularProgress} />
 
   return (
-    <div className={styles.wrapper} id="services">
-      <p className={styles.title}>{t('services')}</p>
+    <>
+      <Seo title="Graff - салон еротичного масажу, наші послуги" />
+      <div className={styles.wrapper} id="services">
+        <p className={styles.title}>{t('services')}</p>
 
-      <div className={styles.container}>
-        <SwiperCarousel array={Services?.data} isService={true} />
-        <div className={styles.tableWrapper}>
-          <PricingTable />
+        <div className={styles.container}>
+          <SwiperCarousel array={Services?.data} isService={true} />
+          <div className={styles.tableWrapper}>
+            <PricingTable />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
 export default Services;
+

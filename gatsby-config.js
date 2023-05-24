@@ -14,10 +14,10 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    // title: `massage`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: `Graff massage Lviv`,
+    description: `Найкращий салон еротичного масажу у Львові`,
     author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    siteUrl: `https://www.graff-massage.com`,
   },
   plugins: [
     `gatsby-plugin-netlify`,

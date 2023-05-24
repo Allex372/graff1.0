@@ -5,12 +5,12 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper';
 import { useSliderIndex } from "../../context/sliderConext";
 import { useLanguage } from "../../context/languageContext";
 import { getLocalizedText } from '../helpers/translator';
+import Seo from "../seo";
+
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
 
 import * as styles from './Swiper.module.css';
 
@@ -173,6 +173,7 @@ const SwiperCarousel = ({ array, isService, isInterier, isModels }) => {
 
     return (
         <>
+            <Seo title="Graff - салон еротичного масажу у Львові, фото" />
             {isModels && array && <LadiesSwiperComponent />}
             {isInterier && array && <InterierSwiperComponent />}
             {isService && array && <ServiceSwiperComponent />}

@@ -3,6 +3,7 @@ import { useQuery } from 'react-query';
 import CircularProgress from '@mui/joy/CircularProgress';
 import axios from "axios";
 
+import Seo from "../../seo";
 import Token from "../../constants/constants";
 import { useLanguage } from "../../../context/languageContext";
 import { getLocalizedText } from '../../helpers/translator';
@@ -36,6 +37,7 @@ const PricingTable = () => {
 
     return (
         <>
+            <Seo title="Graff - салон еротичного масажу, ціни наших послуг" />
             <p className={styles.title}>{t('price')}</p>
             <div className={styles.tableWrapper}>
                 <div className={styles.tblHeader}>
@@ -106,3 +108,4 @@ const PricingTable = () => {
 }
 
 export default PricingTable;
+

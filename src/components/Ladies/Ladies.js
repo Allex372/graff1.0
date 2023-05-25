@@ -1,12 +1,9 @@
 import React from "react"
-import { useState, useMemo } from 'react';
-import { useQuery } from 'react-query';
-import axios from "axios";
-import CircularProgress from '@mui/joy/CircularProgress';
+import { graphql, useStaticQuery } from "gatsby";
+import { useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-import Token from "../constants/constants";
 import Seo from "../seo";
 import { getLocalizedText } from '../helpers/translator';
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -27,26 +24,40 @@ const Ladies = () => {
     const [openDialog, setOpenDialog] = useState(false);
     const [arr, setArr] = useState([]);
 
-    const { isLoading, isFetching, data } = useQuery(
-        'modelData',
-        () =>
-            axios.get(
-                'https://whispering-shore-87525.herokuapp.com/api/models?populate=*',
-                {
-                    headers: {
-                        Authorization:
-                            `Bearer ${Token.access}`,
-                    },
+    const data = useStaticQuery(graphql`
+        query {
+            rest {
+                models {
+                    data {
+                        id
+                        attributes {
+                            image {
+                                data {
+                                    attributes {
+                                        url
+                                    }
+                                }
+                            }
+                            name
+                            localizations {
+                                    data {
+                                    attributes {
+                                        name
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-            ).then(response => response.data),
-        {
-            refetchOnWindowFocus: false,
-            staleTime: 120000,
-            cacheTime: 600000,
+            }
         }
-    );
+    `);
 
-    const Models = useMemo(() => (data ? data : []), [data]);
+    const Models = data?.rest?.models?.data;
+
+    if (!Models || Models.length === 0) {
+        return null;
+    }
 
     const handleOpenDialog = (imagesArray) => {
         setArr([]);
@@ -60,8 +71,6 @@ const Ladies = () => {
         setOpenDialog(false)
     }
 
-    if (isLoading || isFetching) return <CircularProgress color="neutral" className={styles.CircularProgress} />
-
     return (
         <>
             <Seo title="Graff - салон еротичного масажу у Львові, найкращі дівчата" />
@@ -69,7 +78,7 @@ const Ladies = () => {
                 <p className={styles.title}>{t('ladies')}</p>
                 <div className={styles.flexWrapper}>
                     <div className={styles.cardWrapper}>
-                        {Models?.data?.map((ladie) => {
+                        {Models?.map((ladie) => {
                             const { name, image, localizations } = ladie.attributes;
                             const { url } = image?.data?.[0]?.attributes;
                             return (
@@ -104,7 +113,7 @@ const Ladies = () => {
                         modules={[EffectCards]}
                         className="mySwiper"
                     >
-                        {Models?.data?.map((ladie) => {
+                        {Models?.map((ladie) => {
                             const { name, image, localizations } = ladie.attributes;
                             const { url } = image?.data?.[0]?.attributes;
                             return (

@@ -1,17 +1,10 @@
-import React, { useMemo } from "react";
-import { useQuery } from 'react-query';
+import React from "react";
+import { graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
-import axios from "axios";
-import {
-  QueryClient,
-  QueryClientProvider,
-} from 'react-query';
 import { navigate } from 'gatsby';
-import CircularProgress from '@mui/joy/CircularProgress';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-import Token from "../components/constants/constants";
 import Seo from "../components/seo";
 import { getLocalizedText } from '../components/helpers/translator';
 import { useLanguage } from "../context/languageContext";
@@ -19,76 +12,88 @@ import LanguageProvider from '../context/languageContext';
 
 import * as styles from './single-service.module.css';
 
-const queryClient = new QueryClient();
-
-const SingleService = ({ pageContext: { id } }) => {
+const SingleService = ({ data }) => {
   const { language } = useLanguage();
 
-  const { isLoading, isFetching, data } = useQuery(
-    'oneServiceData',
-    () =>
-      axios.get(
-        `https://whispering-shore-87525.herokuapp.com/api/services/${id}?populate=*`,
-        {
-          headers: {
-            Authorization:
-              `Bearer ${Token.access}`,
-          },
-        }
-      ).then(response => response.data),
-    {
-      refetchOnWindowFocus: false,
-    }
-  );
+  const Service = data?.rest?.services?.data;
 
-  const Service = useMemo(() => (data ? data : []), [data]);
-
-  if (isLoading || isFetching) return <CircularProgress color="neutral" className={styles.CircularProgress} />
-
-  if (!isLoading || !isFetching) {
-    const { localizations, image, title, text } = Service?.data?.attributes;
-    const { url } = image?.data?.attributes;
-
-    return (
-      <>
-        <Seo title="Graff - салон еротичного масажу у Львові, найкращі послуги" />
-        <div className={styles.bg}>
-          <div className={styles.menuIcon} onClick={() => navigate(-1)}>
-            <StaticImage height={20} width={20} alt="back" src='../images/arrow-left.png' />
-          </div>
-          <div className={styles.infoWrapper}>
-            <LazyLoadImage
-              src={url}
-              alt="Graff салон еротичного масажу, послуги"
-              effect="blur"
-              className={styles.image}
-            />
-            <div className={styles.imageWrapper}>
-            </div>
-            {localizations?.data?.map((loc, index) => {
-              const { title: titleEn, text: textEn } = loc?.attributes;
-              return (
-                <React.Fragment key={index}>
-                  <p className={styles.title}>
-                    {getLocalizedText(language, titleEn, title)}
-                  </p>
-                  <p className={styles.description}>{getLocalizedText(language, textEn, text)}</p>
-                </React.Fragment>
-              )
-            })}
-          </div>
-        </div >
-      </>
-    )
+  if (!Service || Service.length === 0) {
+    return null;
   }
+
+  const { image, localizations, text, title } = Service?.[0]?.attributes;
+
+  const img = image?.data?.attributes?.url
+
+  return (
+    <>
+      <Seo title="Graff - салон еротичного масажу у Львові, найкращі послуги" />
+      <div className={styles.bg}>
+        <div className={styles.menuIcon} onClick={() => navigate(-1)}>
+          <StaticImage height={20} width={20} alt="back" src='../images/arrow-left.png' />
+        </div>
+        <div className={styles.infoWrapper}>
+          <LazyLoadImage
+            src={img}
+            alt="Graff салон еротичного масажу, послуги"
+            effect="blur"
+            className={styles.image}
+          />
+          <div className={styles.imageWrapper}>
+          </div>
+          {localizations?.data?.map((loc, index) => {
+            const { title: titleEn, text: textEn } = loc?.attributes;
+            return (
+              <React.Fragment key={index}>
+                <p className={styles.title}>
+                  {getLocalizedText(language, titleEn, title)}
+                </p>
+                <p className={styles.description}>{getLocalizedText(language, textEn, text)}</p>
+              </React.Fragment>
+            )
+          })}
+        </div>
+      </div >
+    </>
+  )
 }
 
 const SingleServiceWithContext = (props) => (
   <LanguageProvider>
-    <QueryClientProvider client={queryClient}>
-      <SingleService {...props} />
-    </QueryClientProvider>
+    <SingleService {...props} />
   </LanguageProvider>
 );
 
 export default SingleServiceWithContext;
+
+export const query = graphql`
+  query($url: String) {
+      rest {
+        services(filters: { url: { eq: $url } }) {
+          data {
+            attributes {
+              url
+              category
+              text
+              title
+              localizations {
+                data {
+                  attributes {
+                    text
+                    title
+                  }
+                }
+              }
+              image {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+`;

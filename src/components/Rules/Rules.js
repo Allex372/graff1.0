@@ -1,9 +1,6 @@
-import React, { useMemo } from 'react';
-import { useQuery } from 'react-query';
-import axios from 'axios';
-import CircularProgress from '@mui/joy/CircularProgress';
+import React from 'react';
+import { graphql, useStaticQuery } from "gatsby";
 
-import Token from '../constants/constants';
 import Seo from '../seo';
 import { getLocalizedText } from '../helpers/translator';
 import { useLanguage } from '../../context/languageContext';
@@ -12,28 +9,46 @@ import * as styles from './Rules.module.css';
 const Rules = () => {
     const { t, language } = useLanguage();
 
-    const { isLoading, isFetching, data } = useQuery(
-        'rulesData',
-        () =>
-            axios.get(
-                'https://whispering-shore-87525.herokuapp.com/api/rules?populate=*',
-                {
-                    headers: {
-                        Authorization:
-                            `Bearer ${Token.access}`,
-                    },
+    const data = useStaticQuery(graphql`
+        query {
+            rest {
+                rules {
+                    data {
+                        attributes {
+                        rule7
+                        rule6
+                        rule5
+                        rule4
+                        rule3
+                        rule2
+                        rule1
+                        description
+                            localizations {
+                                data {
+                                    attributes {
+                                        rule7
+                                        rule6
+                                        rule5
+                                        rule4
+                                        rule3
+                                        rule2
+                                        rule1
+                                        description
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-            ).then(response => response.data),
-        {
-            refetchOnWindowFocus: false,
-            staleTime: 120000,
-            cacheTime: 600000,
+            }
         }
-    );
+    `);
 
-    const Rules = useMemo(() => (data ? data : []), [data]);
+    const Rules = data?.rest?.rules?.data;
 
-    if (isLoading || isFetching) return <CircularProgress color="neutral" className={styles.CircularProgress} />
+    if (!Rules || Rules.length === 0) {
+        return null;
+    }
 
     return (
         <>
@@ -43,7 +58,7 @@ const Rules = () => {
 
                 <div className={styles.infoWrapper}>
                     {
-                        Rules?.data?.map((el) => {
+                        Rules?.map((el) => {
                             const {
                                 description,
                                 localizations,

@@ -1,9 +1,5 @@
 import React, { lazy, Suspense } from "react";
 import '../../18n';
-import {
-  QueryClient,
-  QueryClientProvider,
-} from 'react-query'
 
 import LanguageProvider from '../context/languageContext';
 
@@ -24,51 +20,46 @@ const InterierGalery = lazy(() => import('../components/InterierGalery/InterierG
 const Ladies = lazy(() => import('../components/Ladies/Ladies'));
 const Rules = lazy(() => import('../components/Rules/Rules'));
 
-
-const queryClient = new QueryClient();
-
 const IndexPage = () => {
   return (
     <>
       <Seo title="Graff - салон еротичного масажу" />
       <div className={styles.mainWrapper}>
-        <QueryClientProvider client={queryClient}>
-          <LanguageProvider>
-            <Suspense fallback='Loading...'>
+        <LanguageProvider>
+          <Suspense fallback='Loading...'>
 
-              <Layout>
-                <SideMenuContextProvide>
-                  <LogoScreen />
-                </SideMenuContextProvide>
+            <Layout>
+              <SideMenuContextProvide>
+                <LogoScreen />
+              </SideMenuContextProvide>
 
-              </Layout>
+            </Layout>
 
-              <SliderContextProvide>
-                <BaseLayout>
-                  <AboutUs />
-                  <div className={styles.lineWrapper}>
-                    <GradientLine />
-                  </div>
-                  <Ladies />
-                  <div className={styles.lineWrapper}>
-                    <GradientLine />
-                  </div>
-                  <Services />
-                  <div className={styles.lineWrapper}>
-                    <GradientLine />
-                  </div>
-                  <InterierGalery />
-                  <div className={styles.lineWrapper}>
-                    <GradientLine />
-                  </div>
-                  <Rules />
+            <SliderContextProvide>
+              <BaseLayout>
+                <AboutUs />
+                <div className={styles.lineWrapper}>
+                  <GradientLine />
+                </div>
+                <Ladies />
+                <div className={styles.lineWrapper}>
+                  <GradientLine />
+                </div>
+                <Services />
+                <div className={styles.lineWrapper}>
+                  <GradientLine />
+                </div>
+                <InterierGalery />
+                <div className={styles.lineWrapper}>
+                  <GradientLine />
+                </div>
+                <Rules />
 
-                </BaseLayout>
-              </SliderContextProvide>
+              </BaseLayout>
+            </SliderContextProvide>
 
-            </Suspense>
-          </LanguageProvider>
-        </QueryClientProvider>
+          </Suspense>
+        </LanguageProvider>
 
         <ScrollToTop showBelow={250} />
       </div>

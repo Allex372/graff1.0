@@ -1,9 +1,6 @@
-import React, { useMemo, useEffect } from "react";
-import { useQuery } from 'react-query';
-import CircularProgress from '@mui/joy/CircularProgress';
-import axios from "axios";
+import React, { useEffect } from "react";
+import { graphql, useStaticQuery } from "gatsby";
 
-import Token from "../constants/constants";
 import SwiperCarousel from "../Swiper/Swiper";
 import Seo from "../seo";
 import { useLanguage } from "../../context/languageContext";
@@ -20,28 +17,44 @@ const Services = () => {
     };
   });
 
-  const { isLoading, isFetching, data } = useQuery(
-    'serviceData',
-    () =>
-      axios.get(
-        'https://whispering-shore-87525.herokuapp.com/api/services?populate=*',
-        {
-          headers: {
-            Authorization:
-              `Bearer ${Token.access}`,
-          },
+  const data = useStaticQuery(graphql`
+        query {
+            rest {
+              services {
+                data {
+                  id
+                  attributes {
+                    url
+                    title
+                    text
+                    category
+                    image {
+                      data {
+                        attributes {
+                          url
+                        }
+                      }
+                    }
+                    localizations {
+                      data {
+                        attributes {
+                          title
+                          text
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
         }
-      ).then(response => response.data),
-    {
-      refetchOnWindowFocus: false,
-      staleTime: 120000,
-      cacheTime: 600000,
-    }
-  );
+    `);
 
-  const Services = useMemo(() => (data ? data : []), [data]);
+  const Services = data?.rest?.services?.data;
 
-  if (isLoading || isFetching) return <CircularProgress color="neutral" className={styles.CircularProgress} />
+  if (!Services || Services.length === 0) {
+    return null;
+  }
 
   return (
     <>
@@ -50,7 +63,7 @@ const Services = () => {
         <p className={styles.title}>{t('services')}</p>
 
         <div className={styles.container}>
-          <SwiperCarousel array={Services?.data} isService={true} />
+          <SwiperCarousel array={Services} isService={true} />
           <div className={styles.tableWrapper}>
             <PricingTable />
           </div>

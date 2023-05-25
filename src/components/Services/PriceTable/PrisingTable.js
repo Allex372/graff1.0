@@ -1,10 +1,7 @@
-import React, { useMemo } from "react";
-import { useQuery } from 'react-query';
-import CircularProgress from '@mui/joy/CircularProgress';
-import axios from "axios";
+import React from "react";
+import { graphql, useStaticQuery } from "gatsby";
 
 import Seo from "../../seo";
-import Token from "../../constants/constants";
 import { useLanguage } from "../../../context/languageContext";
 import { getLocalizedText } from '../../helpers/translator';
 import * as styles from './PriceTable.module.css';
@@ -12,28 +9,51 @@ import * as styles from './PriceTable.module.css';
 const PricingTable = () => {
     const { t, language } = useLanguage();
 
-    const { isLoading, isFetching, data } = useQuery(
-        'priceData',
-        () =>
-            axios.get(
-                'https://whispering-shore-87525.herokuapp.com/api/prices?populate=*',
-                {
-                    headers: {
-                        Authorization:
-                            `Bearer ${Token.access}`,
-                    },
+    const data = useStaticQuery(graphql`
+        query {
+            rest {
+                prices {
+                    data {
+                        attributes {
+                        title
+                        time3
+                        time2
+                        time1
+                        girl3time3price
+                        girl2time2price
+                        girl2time1price
+                        girl1time3price
+                        girl1time2price
+                        girl1time1price
+                            localizations {
+                                data {
+                                    attributes {
+                                        title
+                                        time3
+                                        time2
+                                        time1
+                                        girl3time3price
+                                        girl2time2price
+                                        girl2time1price
+                                        girl1time3price
+                                        girl1time2price
+                                        girl1time1price
+                                    }
+                                }
+                            }
+                        }
+                        id
+                    }
                 }
-            ).then(response => response.data),
-        {
-            refetchOnWindowFocus: false,
-            staleTime: 120000,
-            cacheTime: 600000,
+            }
         }
-    );
+    `);
 
-    const Prices = useMemo(() => (data ? data : []), [data]);
+    const Prices = data?.rest?.prices?.data;
 
-    if (isLoading || isFetching) return <CircularProgress color="neutral" className={styles.CircularProgress} />
+    if (!Prices || Prices.length === 0) {
+        return null;
+    }
 
     return (
         <>
@@ -55,7 +75,7 @@ const PricingTable = () => {
                 <div className={styles.tblContent}>
                     <table cellPadding="0" cellSpacing="0" border="0">
                         <tbody>
-                            {Prices?.data?.map((data, index) => {
+                            {Prices?.map((data, index) => {
                                 const {
                                     girl1time1price,
                                     girl1time2price,

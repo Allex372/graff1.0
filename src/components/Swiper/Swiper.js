@@ -55,7 +55,7 @@ const SwiperCarousel = ({ array, isService, isInterier, isModels }) => {
                 className={styles.swiperContainer}
             >
                 {array?.map((service) => {
-                    const { title, image, localizations } = service.attributes;
+                    const { title, image, localizations, category, url } = service.attributes;
 
                     return (
                         <SwiperSlide className={styles.swiperSlide} key={service.id}>
@@ -78,7 +78,7 @@ const SwiperCarousel = ({ array, isService, isInterier, isModels }) => {
                                 }
                                 )}
                                 <div onClick={() => handleScroll()}>
-                                    <Link to={`/${service.id}`} className={styles.link}>{t('readMore')} -&gt;</Link>
+                                    <Link to={`/${category}/${url}`} className={styles.link}>{t('readMore')} -&gt;</Link>
                                 </div>
                             </div>
                         </SwiperSlide>

@@ -81,13 +81,6 @@
     justify-content: space-around;
 }
 
-.mobilelanguages {
-    display: flex;
-    align-items: center;
-    color: aliceblue;
-    justify-content: center;
-}
-
 .contactsMobileWrapper {
     display: flex;
     justify-content: center;
@@ -126,8 +119,7 @@
     cursor: pointer;
 }
 
-.languages span:not(:first-child),
-.mobilelanguages span:not(:first-child) {
+.languages span:not(:first-child) {
     margin-left: 4px;
 }
 
@@ -141,7 +133,9 @@
     }
 
     .languages {
-        display: none;
+        top: 25px;
+        left: 20px;
+        z-index: 2;
     }
 
     .contactsInfo a:not(:first-child) {

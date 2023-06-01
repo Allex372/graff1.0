@@ -139,21 +139,6 @@ const LogoScreen = () => {
                                     </a>
                                 </div>
                             </div>
-                            <div className={styles.mobilelanguages}>
-                                <span
-                                    className={language === 'ua' && `${styles.active}`}
-                                    onClick={() => handleChangeLanguage('ua')}
-                                >
-                                    UA
-                                </span>
-                                <span>/</span>
-                                <span
-                                    className={language === 'en' && `${styles.active}`}
-                                    onClick={() => handleChangeLanguage('en')}
-                                >
-                                    EN
-                                </span>
-                            </div>
                         </div>
                     </div>
                 }

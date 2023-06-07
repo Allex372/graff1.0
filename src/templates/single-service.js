@@ -21,7 +21,7 @@ const SingleService = ({ data }) => {
     return null;
   }
 
-  const { image, localizations, text, title } = Service?.[0]?.attributes;
+  const { image, localizations, text, title, point1, point2, point3, point4, point5, point6, point7, point8, point9 } = Service?.[0]?.attributes;
 
   const img = image?.data?.attributes?.url
 
@@ -42,13 +42,26 @@ const SingleService = ({ data }) => {
           <div className={styles.imageWrapper}>
           </div>
           {localizations?.data?.map((loc, index) => {
-            const { title: titleEn, text: textEn } = loc?.attributes;
+            const { title: titleEn, text: textEn, point1: point1En, point2: point2En, point3: point3En, point4: point4En, point5: point5En, point6: point6En, point7: point7En, point8: point8En, point9: point9En } = loc?.attributes;
             return (
               <React.Fragment key={index}>
                 <p className={styles.title}>
                   {getLocalizedText(language, titleEn, title)}
                 </p>
                 <p className={styles.description}>{getLocalizedText(language, textEn, text)}</p>
+                <div className={styles.ulWrapper}>
+                  <ul className={styles.serviceList}>
+                    {point1 && <li className={styles.liText}>{getLocalizedText(language, point1En, point1)}</li>}
+                    {point2 && <li className={styles.liText}>{getLocalizedText(language, point2En, point2)}</li>}
+                    {point3 && <li className={styles.liText}>{getLocalizedText(language, point3En, point3)}</li>}
+                    {point4 && <li className={styles.liText}>{getLocalizedText(language, point4En, point4)}</li>}
+                    {point5 && <li className={styles.liText}>{getLocalizedText(language, point5En, point5)}</li>}
+                    {point6 && <li className={styles.liText}>{getLocalizedText(language, point6En, point6)}</li>}
+                    {point7 && <li className={styles.liText}>{getLocalizedText(language, point7En, point7)}</li>}
+                    {point8 && <li className={styles.liText}>{getLocalizedText(language, point8En, point8)}</li>}
+                    {point9 && <li className={styles.liText}>{getLocalizedText(language, point9En, point9)}</li>}
+                  </ul>
+                </div>
               </React.Fragment>
             )
           })}
@@ -76,11 +89,29 @@ export const query = graphql`
               category
               text
               title
+              point1
+              point2
+              point3
+              point4
+              point5
+              point6
+              point7
+              point8
+              point9
               localizations {
                 data {
                   attributes {
                     text
                     title
+                    point1
+                    point2
+                    point3
+                    point4
+                    point5
+                    point6
+                    point7
+                    point8
+                    point9
                   }
                 }
               }

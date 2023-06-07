@@ -37,6 +37,44 @@
     padding: 0 12px 24px 12px;
 }
 
+/* .textPlayfair {
+    font-size: 24px;
+    font-family: 'Playfair Display', serif;
+    line-height: 32px;
+    margin-top: 8px;
+} */
+
+.ulWrapper {
+    width: 100%;
+    margin-bottom: 32px;
+}
+
+.liText {
+    margin-top: 16px;
+    font-family: 'Raleway', serif;
+    font-size: 22px;
+    line-height: 32px;
+    padding: 0 0px 0px 12px;
+    color: #FDB931;
+}
+
+.serviceList {
+    margin-top: 16px;
+    margin-left: 24px;
+    list-style: none;
+}
+
+.serviceList li::before {
+    content: "\2022";
+    background: linear-gradient(to bottom, #cfc09f 22%, #634f2c 24%, #cfc09f 26%, #cfc09f 27%, #ffecb3 40%, #3a2c0f 78%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
 .imageWrapper {
     height: auto;
     width: 300px;

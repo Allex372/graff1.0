@@ -114,6 +114,7 @@ const SwiperCarousel = ({ array, isService, isInterier, isModels }) => {
             className={styles.swiperContainer}
         >
             {array?.map((image, id) => {
+                // console.log(data);
                 return (
                     <SwiperSlide key={id} className={styles.swiperSlide}>
                         <img
@@ -152,13 +153,12 @@ const SwiperCarousel = ({ array, isService, isInterier, isModels }) => {
             modules={[EffectCoverflow, Pagination, Navigation]}
             className={styles.swiperContainer}
         >
-            {array?.data?.map((data) => {
+            {array?.map((data) => {
                 return (
                     <SwiperSlide key={data?.id} className={styles.swiperSlide}>
                         <img
                             src={data?.attributes?.url}
                             alt="galery"
-                            effect="blur"
                             className={styles.image}
                         />
                     </SwiperSlide>

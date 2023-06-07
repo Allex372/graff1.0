@@ -1,115 +1,42 @@
 import React from 'react';
-import { graphql, useStaticQuery } from "gatsby";
 
 import Seo from '../seo';
-import { getLocalizedText } from '../helpers/translator';
 import { useLanguage } from '../../context/languageContext';
 import * as styles from './Rules.module.css';
 
 const Rules = () => {
-    const { t, language } = useLanguage();
-
-    const data = useStaticQuery(graphql`
-        query {
-            rest {
-                rules {
-                    data {
-                        attributes {
-                        rule7
-                        rule6
-                        rule5
-                        rule4
-                        rule3
-                        rule2
-                        rule1
-                        description
-                            localizations {
-                                data {
-                                    attributes {
-                                        rule7
-                                        rule6
-                                        rule5
-                                        rule4
-                                        rule3
-                                        rule2
-                                        rule1
-                                        description
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    `);
-
-    const Rules = data?.rest?.rules?.data;
-
-    if (!Rules || Rules.length === 0) {
-        return null;
-    }
+    const { t } = useLanguage();
 
     return (
         <>
             <Seo title="Graff - салон еротичного масажу у Львові, правила відвідування" />
             <div className={styles.wrapper} id='rules'>
                 <p className={styles.title}>{t('rules')}</p>
+                <div className={styles.container}>
+                    <ul className={styles.rulesList}>
+                        <li>{t('rule1')}</li>
+                        <li>{t('rule2')}</li>
+                        <li>{t('rule3')}</li>
+                        <li>{t('rule4')}</li>
+                        <li>{t('rule5')}</li>
+                    </ul>
 
-                <div className={styles.infoWrapper}>
-                    {
-                        Rules?.map((el) => {
-                            const {
-                                description,
-                                localizations,
-                                rule1,
-                                rule2,
-                                rule3,
-                                rule4,
-                                rule5,
-                                rule6,
-                                rule7
-                            } = el.attributes;
-                            return (
-                                <React.Fragment key={el.id}>
-                                    {
-                                        localizations?.data?.map((loc, index) => {
-                                            const {
-                                                description: descriptionEn,
-                                                rule1: rule1En,
-                                                rule2: rule2En,
-                                                rule3: rule3En,
-                                                rule4: rule4En,
-                                                rule5: rule5En,
-                                                rule6: rule6En,
-                                                rule7: rule7En
-                                            } = loc?.attributes;
-                                            return (
-                                                <React.Fragment key={index}>
-                                                    <p className={styles.text}>
-                                                        {getLocalizedText(language, descriptionEn, description)}
-                                                    </p>
+                    <p>{t('ruleP1')}</p>
 
-                                                    <ul className={styles.rulesList}>
-                                                        <li className={styles.textPlayfair}>
-                                                            {getLocalizedText(language, rule1En, rule1)}
-                                                        </li>
-                                                        <li className={styles.textPlayfair}>{getLocalizedText(language, rule2En, rule2)}</li>
-                                                        <li className={styles.textPlayfair}>{getLocalizedText(language, rule3En, rule3)}</li>
-                                                        <li className={styles.textPlayfair}>{getLocalizedText(language, rule4En, rule4)}</li>
-                                                        <li className={styles.textPlayfair}>{getLocalizedText(language, rule5En, rule5)}</li>
-                                                        <li className={styles.textPlayfair}>{getLocalizedText(language, rule6En, rule6)}</li>
-                                                        <li className={styles.textPlayfair}>{getLocalizedText(language, rule7En, rule7)}</li>
-                                                    </ul>
-                                                </React.Fragment>
-                                            )
-                                        }
-                                        )}
-                                </React.Fragment>
-                            )
-                        })
-                    }
+                    <p className={styles.advantages}>{t('ruleP2')}</p>
+                    <ul className={styles.advantagesList}>
+                        <li><span className={styles.highlight}>{t('subRuleTitle1')}</span> - {t('subRule1')}</li>
+                        <li><span className={styles.highlight}>{t('subRuleTitle2')}</span> - {t('subRule2')}</li>
+                        <li><span className={styles.highlight}>{t('subRuleTitle3')}</span> - {t('subRule3')}</li>
+                        <li><span className={styles.highlight}>{t('subRuleTitle4')}</span></li>
+                        <li><span className={styles.highlight}>{t('subRuleTitle5')}</span></li>
+                        <li><span className={styles.highlight}>{t('subRuleTitle6')}</span> - {t('subRule6')}</li>
+                        <li><span className={styles.highlight}>{t('subRuleTitle7')}</span> - {t('subRule7')}</li>
+                        <li><span className={styles.highlight}>{t('subRuleTitle8')}</span> - {t('subRule8')}</li>
+                        <li><span className={styles.highlight}>{t('subRuleTitle9')}</span> - {t('subRule9')}</li>
+                    </ul>
                 </div>
+
             </div>
         </>
     )

@@ -23,8 +23,7 @@
     }
 
     .swiperSlide {
-        width: 20rem;
-        height: 36rem;
+        width: 18rem;
     }
 
     .swiperSlide img {
@@ -148,6 +147,7 @@
     }
 
     .title {
-        font-size: 29px;
+        font-size: 22px;
+        text-align: center;
     }
 }

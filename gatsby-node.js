@@ -2,19 +2,19 @@ const path = require('path');
 
 exports.createPages = async ({ actions, graphql }) => {
     const { data } = await graphql(`
-    query {
-        rest {
-            services {
-                data {
-                    attributes {
-                        url
-                        category
+        query {
+            rest {
+                services {
+                    data {
+                        attributes {
+                            url
+                            category
+                        }
                     }
                 }
             }
         }
-    }
-  `)
+      `)
 
     data?.rest?.services?.data?.forEach(node => {
         const { url, category } = node.attributes;

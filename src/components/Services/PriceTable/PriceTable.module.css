@@ -53,7 +53,9 @@ td {
 }
 
 .imperial {
+    overflow-wrap: break-word;
     word-wrap: break-word;
+    hyphens: auto;
     padding: 5px;
 }
 

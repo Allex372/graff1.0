@@ -37,9 +37,9 @@ module.exports = {
       options: {
         typeName: 'REST',
         fieldName: 'rest',
-        url: 'http://www.graff-massage.com:8080/graphql',
+        url: 'https://whispering-shore-87525.herokuapp.com/graphql',
         headers: {
-          Authorization: 'Bearer 9d4d07b8c7e7e98b3fdfe94fdb83e4101a56ee2ebdd542f52cb40652c40367c19d63e2a3d4736bc766693c965e2ee6b45eb371ae186fc25c0a4ad27b2013000468f739109e4d9ebf4c9efd644f199a418aa4904b3aef2da4f186d2d3171fdcfbdb520b98e2d22f545d37468d4c3a144b0c2909c37434c9bff453edf2c31f3da2',
+          Authorization: 'Bearer 571ed7986473215e45d999825cca0187c80a0561cf3246a38e6aa437a408bda689eacd923909bdebf75b17ae696f35208f876bc02fb3e7479f20c89e4d3711e66bfa7795d9b8a2f8122f4d8f9a63e2d306259f4048eb8048a7d27fadfde000139d1909b1abd9bde84980162a303658a65e18346446b6e5c19e42631ec1a6aeaa',
         },
       },
     },
@@ -54,7 +54,7 @@ module.exports = {
         // https://css-tricks.com/meta-theme-color-and-trickery/
         // theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/icon.jpg`, // This path is relative to the root of the site.
       },
     },
   ],

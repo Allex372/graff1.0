@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { StaticImage } from "gatsby-plugin-image";
+import imgr from '../../../src/images/arrow-left.png'
 
 import * as styles from './ScrollToTop.module.css';
 
@@ -29,7 +30,7 @@ const ScrollToTop = ({ showBelow }) => {
         <>
             {show && (
                 <div className={styles.menuIcon} onClick={handleClick}>
-                    <StaticImage src='../../images/arrow-left.png' alt="back" height={20} width={20} />
+                    <StaticImage src="../../../src/images/arrow-left.png" alt="back" height={20} width={20} />
                 </div>
             )}
         </>

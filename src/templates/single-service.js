@@ -21,8 +21,6 @@ const SingleService = ({ data }) => {
     return null;
   }
 
-  console.log(Service?.[0]?.attributes);
-
   const { image, localizations, text, title, point1, point2, point3, point4, point5, point6, point7, point8, point9 } = Service?.[0]?.attributes;
 
   const img = image?.data?.attributes?.url

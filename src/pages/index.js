@@ -23,7 +23,7 @@ const Rules = lazy(() => import('../components/Rules/Rules'));
 const IndexPage = () => {
   return (
     <>
-      <Seo title="Graff - салон еротичного масажу" />
+      <Seo title="Graff - еротичний масаж Львів" />
       <div className={styles.mainWrapper}>
         <LanguageProvider>
           <Suspense fallback='Loading...'>

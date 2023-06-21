@@ -14,7 +14,7 @@ import * as styles from './ModelsDialog.module.css'
 const ModelsDialog = ({ isOpenDialog, handleClose, imagesArray, isModels }) => {
     return (
         <>
-            <Seo title="Graff - салон еротичного масажу у Львові" />
+            <Seo title="еротичний масаж Львів" />
             <Dialog onClose={handleClose} open={isOpenDialog}
                 PaperProps={{
                     style: {

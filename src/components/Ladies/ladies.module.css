@@ -24,14 +24,15 @@
 }
 
 .cardWrapper {
-    width: 90%;
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .card {
     position: relative;
-    height: 400px;
+    height: 330px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -91,7 +92,7 @@
 
 .card .sci {
     position: absolute;
-    bottom: 40px;
+    bottom: 50px;
     display: flex;
 }
 
@@ -136,7 +137,7 @@
 
     .card .sci {
         position: absolute;
-        bottom: 50px;
+        bottom: 20px;
         display: flex;
     }
 

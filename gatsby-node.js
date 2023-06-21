@@ -4,7 +4,7 @@ exports.createPages = async ({ actions, graphql }) => {
     const { data } = await graphql(`
         query {
             rest {
-                services {
+                services(pagination: {limit: 20}) {
                     data {
                         attributes {
                             url

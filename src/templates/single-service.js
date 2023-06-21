@@ -27,7 +27,7 @@ const SingleService = ({ data }) => {
 
   return (
     <>
-      <Seo title="Graff - салон еротичного масажу у Львові, найкращі послуги" />
+      <Seo title="Graff - еротичний масаж Львів" />
       <div className={styles.bg}>
         <div className={styles.menuIcon} onClick={() => navigate(-1)}>
           <StaticImage height={20} width={20} alt="back" src='../images/arrow-left.png' />

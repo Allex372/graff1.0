@@ -54,7 +54,7 @@ const AboutUs = () => {
 
     return (
         <>
-            <Seo title="Graff - найкращий салон еротичного масажу у Львові" />
+            <Seo title="Graff - еротичний масаж Львів" />
             <div id="about" className={styles.wrapper}>
                 <div className={styles.infoWrapper}>
                     <div className={styles.infoImgWrapper}>

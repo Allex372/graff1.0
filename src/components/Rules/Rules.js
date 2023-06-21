@@ -9,7 +9,7 @@ const Rules = () => {
 
     return (
         <>
-            <Seo title="Graff - салон еротичного масажу у Львові, правила відвідування" />
+            <Seo title="Graff - еротичний масаж Львів" />
             <div className={styles.wrapper} id='rules'>
                 <p className={styles.title}>{t('rules')}</p>
                 <div className={styles.container}>

@@ -69,7 +69,7 @@ const InterierGalery = () => {
     if (fetchedGalery?.length) {
         return (
             <>
-                <Seo title="Graff - салон еротичного масажу у Львові, інтер`єр" />
+                <Seo title="Graff - еротичний масаж Львів" />
                 <div className={styles.wrapper} id="galery">
                     <p className={styles.title}>{t('interior')}</p>
                     <div className={styles.container}>
@@ -81,7 +81,7 @@ const InterierGalery = () => {
     } else {
         return (
             <>
-                <Seo title="Graff - салон еротичного масажу у Львові, інтер`єр" />
+                <Seo title="Graff - еротичний масаж Львів" />
                 <div className={styles.wrapper} id="galery">
                     <p className={styles.title}>{t('interior')}</p>
                     <div className={styles.container}>

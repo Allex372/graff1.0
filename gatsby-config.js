@@ -14,7 +14,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Graff massage Lviv`,
+    title: `Еротичний маcаж Львів`,
     description: `Найкращий салон еротичного масажу у Львові`,
     author: `@gatsbyjs`,
     siteUrl: `https://www.graff-massage.com`,
@@ -25,6 +25,7 @@ module.exports = {
     `gatsby-transformer-remark`,
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
     {
       resolve: "gatsby-plugin-anchor-links",

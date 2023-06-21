@@ -94,7 +94,7 @@ const PricingTable = () => {
 
     return (
         <>
-            <Seo title="Graff - салон еротичного масажу, ціни наших послуг" />
+            <Seo title="Graff - еротичний масаж Львів" />
             <p className={styles.title}>{t('price')}</p>
             <div className={styles.tableWrapper}>
                 <div className={styles.tblHeader}>

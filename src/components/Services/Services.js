@@ -94,7 +94,7 @@ const Services = () => {
 
   return (
     <>
-      <Seo title="Graff - салон еротичного масажу, наші послуги" />
+      <Seo title="Graff - еротичний масаж Львів" />
       <div className={styles.wrapper} id="services">
         <p className={styles.title}>{t('services')}</p>
 

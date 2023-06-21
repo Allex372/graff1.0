@@ -111,7 +111,7 @@ const Ladies = () => {
 
     return (
         <>
-            <Seo title="Graff - салон еротичного масажу у Львові, найкращі дівчата" />
+            <Seo title="Graff - еротичний масаж Львів" />
             <div className={styles.wrapper} id="ladies">
                 <p className={styles.title}>{t('ladies')}</p>
                 <div className={styles.flexWrapper}>
@@ -124,7 +124,7 @@ const Ladies = () => {
                                     <div className={styles.card} key={ladie.id}>
                                         <div className={styles.content}>
                                             <div className={styles.imgBx} onClick={() => handleOpenDialog(image)}>
-                                                <LazyLoadImage src={url} alt="Graff - салон еротичного масажу, наші дівчата" className={styles.image} />
+                                                <LazyLoadImage src={url} alt="Graff - еротичний масаж Львів" className={styles.image} />
                                             </div>
                                         </div>
 
@@ -150,7 +150,7 @@ const Ladies = () => {
                                     <div className={styles.card} key={ladie.id}>
                                         <div className={styles.content}>
                                             <div className={styles.imgBx} onClick={() => handleOpenDialog(image)}>
-                                                <LazyLoadImage src={url} alt="Graff - салон еротичного масажу, наші дівчата" className={styles.image} />
+                                                <LazyLoadImage src={url} alt="Graff - еротичний масаж Львів" className={styles.image} />
                                             </div>
                                         </div>
 
@@ -187,7 +187,7 @@ const Ladies = () => {
                                         <div className={styles.card}>
                                             <div className={styles.content}>
                                                 <div className={styles.imgBx} onClick={() => handleOpenDialog(image)}>
-                                                    <LazyLoadImage src={url} alt="Graff - салон еротичного масажу, наші дівчата" className={styles.image} />
+                                                    <LazyLoadImage src={url} alt="Graff - еротичний масаж Львів" className={styles.image} />
                                                 </div>
                                             </div>
 
@@ -215,7 +215,7 @@ const Ladies = () => {
                                         <div className={styles.card}>
                                             <div className={styles.content}>
                                                 <div className={styles.imgBx} onClick={() => handleOpenDialog(image)}>
-                                                    <LazyLoadImage src={url} alt="Graff - салон еротичного масажу, наші дівчата" className={styles.image} />
+                                                    <LazyLoadImage src={url} alt="Graff - еротичний масаж Львів" className={styles.image} />
                                                 </div>
                                             </div>
 

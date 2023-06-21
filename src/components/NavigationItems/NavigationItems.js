@@ -17,7 +17,7 @@ const NavigationItems = () => {
   }
   return (
     <header className={styles.wrapper}>
-      <Seo title="Graff - салон еротичного масажу у Львові" />
+      <Seo title="Graff - еротичний масаж Львів" />
 
       <ul className={styles.listWrapper}>
 

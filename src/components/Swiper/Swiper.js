@@ -173,7 +173,7 @@ const SwiperCarousel = ({ array, isService, isInterier, isModels }) => {
 
     return (
         <>
-            <Seo title="Graff - салон еротичного масажу у Львові, фото" />
+            <Seo title="Graff - еротичний масаж Львів" />
             {isModels && array && <LadiesSwiperComponent />}
             {isInterier && array && <InterierSwiperComponent />}
             {isService && array && <ServiceSwiperComponent />}

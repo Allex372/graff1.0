@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
+import { Helmet } from 'react-helmet';
 
 import { useSideMenuOpen } from "../../context/sideMenuContext";
 import Seo from "../seo";
@@ -45,7 +46,11 @@ const LogoScreen = () => {
 
     return (
         <>
-            <Seo title="Graff - салон еротичного масажу" />
+            <Helmet>
+                <title>Graff - еротичний масаж Львів</title>
+                <meta name="description" content="еротичний масаж Львів" />
+            </Helmet>
+            <Seo title="Graff - еротичний масаж Львів" />
 
             <div className={styles.wrapper}>
                 <div className={styles.languages}>
@@ -77,9 +82,9 @@ const LogoScreen = () => {
                     </div>
                     <div className={styles.contactWrapper}>
                         <div className={styles.contactsInfo}>
-                            <a href="tel:+380986374614" target='_blank' rel="noreferrer">
+                            <a href="tel:+380969116400" target='_blank' rel="noreferrer">
                                 <i class="fas fa-phone fa-lg"></i>
-                                <span>+380986374614</span>
+                                <span>+380969116400</span>
                             </a>
 
                             <a href="tg://resolve?domain=telegram_username" target='_blank' rel="noreferrer">

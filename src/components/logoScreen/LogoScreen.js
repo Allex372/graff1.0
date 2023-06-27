@@ -87,17 +87,17 @@ const LogoScreen = () => {
                                 <span>+380969116400</span>
                             </a>
 
-                            <a href="tg://resolve?domain=telegram_username" target='_blank' rel="noreferrer">
+                            {/* <a href="https://t.me/+380969116400" target='_blank' rel="noreferrer">
                                 <i class="fab fa-telegram fa-lg"></i>
                                 <span>Telegram</span>
-                            </a>
+                            </a> */}
 
-                            <a href="https://wa.me/1234567890" target='_blank' rel="noreferrer">
+                            <a href="https://wa.me/380969116400" target='_blank' rel="noreferrer">
                                 <i class="fab fa-whatsapp fa-lg"></i>
                                 <span>WhatsApp</span>
                             </a>
 
-                            <a href="viber://pa?chatURI=viber_username" target='_blank' rel="noreferrer">
+                            <a a href="viber://chat?number=380969116400" target='_blank' rel="noreferrer">
                                 <i class="fab fa-viber fa-lg"></i>
                                 <span>Viber</span>
                             </a>

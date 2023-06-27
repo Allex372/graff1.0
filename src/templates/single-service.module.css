@@ -27,6 +27,7 @@
     font-family: 'Raleway', serif;
     font-size: 38px;
     color: #FDB931;
+    text-align: center;
 }
 
 .description {
@@ -101,4 +102,41 @@
     border-radius: 50%;
     background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
         radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+}
+
+.pricingTable {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.row {
+    border-bottom: 1px solid #ccc;
+}
+
+.cell {
+    padding: 20px;
+}
+
+.tableTitle {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #FDB931;
+}
+
+.girls {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #FDB931;
+}
+
+.price {
+    font-weight: bold;
 }

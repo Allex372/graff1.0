@@ -95,6 +95,14 @@
     }
 }
 
+[class^="swiper-button-"]::after {
+    content: "" !important;
+}
+
+.sliderControler i {
+    font-size: 42px;
+}
+
 
 .cardWrapper {
     background-color: black;

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { graphql, useStaticQuery } from "gatsby";
-import axios from "axios";
 
 import SwiperCarousel from "../Swiper/Swiper";
 import Seo from "../seo";
@@ -78,6 +77,9 @@ const Services = () => {
 
   useEffect(() => {
     if (fetchedServices && fetchedServices?.length && Services.length) {
+      if (fetchedServices.length >= Services.length || fetchedServices.length <= Services.length) {
+        setIsFetchedModelNew(true);
+      }
       fetchedServices?.map((fetchedService) => {
         const matchedService = Services.find((service) => service.id == fetchedService.id);
         if (matchedService && matchedService.attributes.updatedAt !== fetchedService.attributes.updatedAt) {

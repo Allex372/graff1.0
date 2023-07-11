@@ -86,8 +86,12 @@ const SwiperCarousel = ({ array, isService, isInterier, isModels }) => {
                 })}
 
                 <div className={styles.sliderControler}>
-                    <div className="swiper-button-prev" style={inlineStyles.btnStyles}></div>
-                    <div className="swiper-button-next" style={inlineStyles.btnStyles}></div>
+                    <div className="swiper-button-prev" style={inlineStyles.btnStyles}>
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </div>
+                    <div className="swiper-button-next" style={inlineStyles.btnStyles}>
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </div>
                 </div>
             </Swiper>
         );
@@ -127,8 +131,12 @@ const SwiperCarousel = ({ array, isService, isInterier, isModels }) => {
                 );
             })}
             <div className={styles.sliderControler}>
-                <div className="swiper-button-prev" style={inlineStyles.btnStyles}></div>
-                <div className="swiper-button-next" style={inlineStyles.btnStyles}></div>
+                <div className="swiper-button-prev" style={inlineStyles.btnStyles}>
+                    <i class="fa-solid fa-chevron-left"></i>
+                </div>
+                <div className="swiper-button-next" style={inlineStyles.btnStyles}>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
             </div>
         </Swiper>
     );
@@ -165,8 +173,12 @@ const SwiperCarousel = ({ array, isService, isInterier, isModels }) => {
                 );
             })}
             <div className={styles.sliderControler}>
-                <div className="swiper-button-prev" style={inlineStyles.btnStyles}></div>
-                <div className="swiper-button-next" style={inlineStyles.btnStyles}></div>
+                <div className="swiper-button-prev" style={inlineStyles.btnStyles}>
+                    <i class="fa-solid fa-chevron-left"></i>
+                </div>
+                <div className="swiper-button-next" style={inlineStyles.btnStyles}>
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
             </div>
         </Swiper>
     );

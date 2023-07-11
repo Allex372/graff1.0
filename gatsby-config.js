@@ -24,8 +24,9 @@ module.exports = {
     `gatsby-plugin-anchor-links`,
     `gatsby-transformer-remark`,
     `gatsby-plugin-image`,
-    `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-sharp`,
     {
       resolve: "gatsby-plugin-anchor-links",

@@ -87,17 +87,17 @@ const LogoScreen = () => {
                                 <span>+380969116400</span>
                             </a>
 
-                            {/* <a href="https://t.me/+380969116400" target='_blank' rel="noreferrer">
+                            <a href="https://t.me/Graff_Lviv" target='_blank' rel="noreferrer">
                                 <i class="fab fa-telegram fa-lg"></i>
                                 <span>Telegram</span>
-                            </a> */}
+                            </a>
 
                             <a href="https://wa.me/380969116400" target='_blank' rel="noreferrer">
                                 <i class="fab fa-whatsapp fa-lg"></i>
                                 <span>WhatsApp</span>
                             </a>
 
-                            <a a href="viber://chat?number=380969116400" target='_blank' rel="noreferrer">
+                            <a a href="viber://chat?number=%2B380969116400" target='_blank' rel="noreferrer">
                                 <i class="fab fa-viber fa-lg"></i>
                                 <span>Viber</span>
                             </a>
@@ -123,24 +123,24 @@ const LogoScreen = () => {
                             <NavigationItems />
                             <div className={styles.contactsMobileWrapper}>
                                 <div className={styles.contactsInfoMobile}>
-                                    <a href="tel:+380986374614">
-                                        <i class="fas fa-phone"></i>
-                                        +380986374614
+                                    <a href="tel:+380969116400" target='_blank' rel="noreferrer">
+                                        <i class="fas fa-phone fa-lg"></i>
+                                        <span>+380969116400</span>
                                     </a>
 
-                                    <a href="tg://resolve?domain=telegram_username">
-                                        <i class="fab fa-telegram"></i>
-                                        Telegram
+                                    <a href="https://t.me/https://t.me/Graff_Lviv" target='_blank' rel="noreferrer">
+                                        <i class="fab fa-telegram fa-lg"></i>
+                                        <span>Telegram</span>
                                     </a>
 
-                                    <a href="https://wa.me/1234567890">
-                                        <i class="fab fa-whatsapp"></i>
-                                        WhatsApp
+                                    <a href="https://wa.me/380969116400" target='_blank' rel="noreferrer">
+                                        <i class="fab fa-whatsapp fa-lg"></i>
+                                        <span>WhatsApp</span>
                                     </a>
 
-                                    <a href="viber://pa?chatURI=viber_username">
-                                        <i class="fab fa-viber"></i>
-                                        Viber
+                                    <a a href="viber://chat?number=%2B380969116400" target='_blank' rel="noreferrer">
+                                        <i class="fab fa-viber fa-lg"></i>
+                                        <span>Viber</span>
                                     </a>
                                 </div>
                             </div>

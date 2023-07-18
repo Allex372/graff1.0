@@ -34,16 +34,6 @@ const LogoScreen = () => {
         setIsOpen(!isOpen);
     }
 
-    const handleChangeLanguage = (languageToChange) => {
-        if (languageToChange === 'en') {
-            setEN('en');
-            setIsMenuClose(true);
-        } else {
-            setUA('ua');
-            setIsMenuClose(true);
-        }
-    }
-
     return (
         <>
             <Helmet>

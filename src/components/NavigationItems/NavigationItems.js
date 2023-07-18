@@ -1,5 +1,6 @@
 import React from "react"
 import { AnchorLink } from "gatsby-plugin-anchor-links";
+import { Link } from "gatsby";
 
 import Seo from "../seo";
 import { useLanguage } from '../../context/languageContext';
@@ -43,6 +44,12 @@ const NavigationItems = () => {
           <AnchorLink className={styles.links} to="#galery">
             <li>{t('interior')}</li>
           </AnchorLink>
+        </div>
+
+        <div onClick={() => handleLinkClicked()}>
+          <Link className={styles.links} to="/about-massages">
+            <li>{t('aboutMassages')}</li>
+          </Link>
         </div>
 
         <div onClick={() => handleLinkClicked()}>

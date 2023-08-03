@@ -23,15 +23,18 @@ function Seo({ description, title, children }) {
     `
   )
 
-  const metaDescription = description || site.siteMetadata.description
-  const defaultTitle = site.siteMetadata?.title
+  const metaDescription = description || site.siteMetadata.description;
+  const defaultTitle = site.siteMetadata?.title;
+
+  console.log(title, 'title');
+  console.log(description, 'description');
 
   return (
     <>
-      <title>{defaultTitle ? `${title} | ${defaultTitle}` : title}</title>
-      <meta name="description" content={metaDescription} />
+      <title>{defaultTitle ? `${title}` : title}</title>
+      <meta name="description" content={description ? description : metaDescription} />
       <meta property="og:title" content={title} />
-      <meta property="og:description" content={metaDescription} />
+      <meta property="og:description" content={description ? description : metaDescription} />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary" />
       <meta name="twitter:creator" content={site.siteMetadata?.author || ``} />

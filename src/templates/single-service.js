@@ -52,13 +52,13 @@ const SingleService = ({ data }) => {
   }
 
   const { image, localizations, text, title, point1, point2, point3, point4, point5, point6, point7, point8, point9,
-    time1, time2, time3, girl1time1price, girl1time2price, girl1time3price, girl2time1price, girl2time2price, girl2time3price } = Service?.[0]?.attributes;
+    time1, time2, time3, girl1time1price, girl1time2price, girl1time3price, girl2time1price, girl2time2price, girl2time3price, seoTitle, seoDescription } = Service?.[0]?.attributes;
 
   const img = image?.data?.attributes?.url
 
   return (
     <>
-      <Seo title="Graff - еротичний масаж Львів" />
+      <Seo title={isFetchedServiceNew ? fetchedServices?.attributes?.title : seoTitle} description={isFetchedServiceNew ? fetchedServices?.attributes?.description : seoDescription} />
       <div className={styles.bg}>
         <div className={styles.menuIcon} onClick={() => navigate(-1)}>
           <StaticImage height={20} width={20} alt="back" src='../images/arrow-left.png' />
@@ -237,6 +237,8 @@ export const query = graphql`
               time1
               time2 
               time3 
+              seoTitle
+              seoDescription
               girl1time1price 
               girl1time2price
               girl1time3price

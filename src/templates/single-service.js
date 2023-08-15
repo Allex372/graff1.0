@@ -26,7 +26,7 @@ const SingleService = ({ data }) => {
   const fetchFetchData = async () => {
     try {
       const token = '24da86087f116291ec96ad43dab23b303ab9953b419db27224d705a0241d95806bf312d2019a0b39046444ea84e06fcfcfb764fdc28ec15d5a40f24368c343ea99c9c413aa61aa28cd472da495c88e21486f4769d9199cb861a55ef9b89af31d80ee1e8983e6adb6e0b05ab2b45bd9d56b617d96d16b69a7ca9bd059e17d5f27';
-      const response = await fetch(`https://vast-fjord-05237.herokuapp.com/api/services/${+Service[0].id}`, {
+      const response = await fetch(`https://vast-fjord-05237.herokuapp.com/api/services/${+Service[0].id}?populate=image`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -52,13 +52,13 @@ const SingleService = ({ data }) => {
   }
 
   const { image, localizations, text, title, point1, point2, point3, point4, point5, point6, point7, point8, point9,
-    time1, time2, time3, girl1time1price, girl1time2price, girl1time3price, girl2time1price, girl2time2price, girl2time3price } = Service?.[0]?.attributes;
+    time1, time2, time3, girl1time1price, girl1time2price, girl1time3price, girl2time1price, girl2time2price, girl2time3price, seoTitle, seoDescription } = Service?.[0]?.attributes;
 
   const img = image?.data?.attributes?.url
 
   return (
     <>
-      <Seo title="Graff - еротичний масаж Львів" />
+      <Seo title={isFetchedServiceNew ? fetchedServices?.attributes?.title : seoTitle} description={isFetchedServiceNew ? fetchedServices?.attributes?.description : seoDescription} />
       <div className={styles.bg}>
         <div className={styles.menuIcon} onClick={() => navigate(-1)}>
           <StaticImage height={20} width={20} alt="back" src='../images/arrow-left.png' />
@@ -181,8 +181,6 @@ const SingleService = ({ data }) => {
                         </tbody>
                       </table>
                     </div>
-
-
                   </>
                 }
                 <p className={styles.description}>{getLocalizedText(language, textEn, text)}</p>
@@ -239,6 +237,8 @@ export const query = graphql`
               time1
               time2 
               time3 
+              seoTitle
+              seoDescription
               girl1time1price 
               girl1time2price
               girl1time3price

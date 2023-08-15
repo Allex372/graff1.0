@@ -34,23 +34,13 @@ const LogoScreen = () => {
         setIsOpen(!isOpen);
     }
 
-    const handleChangeLanguage = (languageToChange) => {
-        if (languageToChange === 'en') {
-            setEN('en');
-            setIsMenuClose(true);
-        } else {
-            setUA('ua');
-            setIsMenuClose(true);
-        }
-    }
-
     return (
         <>
             <Helmet>
-                <title>Graff - еротичний масаж Львів</title>
-                <meta name="description" content="еротичний масаж Львів" />
+                {/* <title>Graff - еротичний масаж Львів</title> */}
+                {/* <meta name="description" content="еротичний масаж Львів" /> */}
             </Helmet>
-            <Seo title="Graff - еротичний масаж Львів" />
+            {/* <Seo title="Graff - еротичний масаж Львів" /> */}
 
             <div className={styles.wrapper}>
                 <div className={styles.languages}>

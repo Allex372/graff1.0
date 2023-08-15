@@ -69,7 +69,7 @@ const InterierGalery = () => {
     if (fetchedGalery?.length) {
         return (
             <>
-                <Seo title="Graff - еротичний масаж Львів" />
+                <Seo title="Graff - еротичний масаж Львів" description='Опис' />
                 <div className={styles.wrapper} id="galery">
                     <p className={styles.title}>{t('interior')}</p>
                     <div className={styles.container}>

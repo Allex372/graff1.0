@@ -24,4 +24,27 @@ exports.createPages = async ({ actions, graphql }) => {
             context: { url }
         })
     });
+
+    const { data: AboutMassages } = await graphql(`
+        query {
+            rest {
+              aboutMassages(pagination: {limit: 1000}) {
+                data {
+                    attributes {                    
+                        url
+                    }
+                }
+              }
+            }
+        }`
+    )
+
+    AboutMassages?.rest?.aboutMassages?.data?.forEach(node => {
+        const { url } = node.attributes;
+        actions.createPage({
+            path: `about-massages/${url}`,
+            component: path.resolve('./src/templates/single-about-massages-card.js'),
+            context: { url }
+        })
+    });
 }

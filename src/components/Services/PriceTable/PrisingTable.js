@@ -96,6 +96,21 @@ const PricingTable = () => {
         <>
             <Seo title="Graff - еротичний масаж Львів" />
             <p className={styles.title}>{t('price')}</p>
+
+            <div className={styles.shareWrapper}>
+                <p className={styles.shareTitle}>{t('share')}</p>
+                <div className={styles.shareListContainer}>
+                    <ul className={styles.shareList}>
+                        <li>{t('share1')}</li>
+                        <li>{t('share2')}</li>
+                        <li>{t('share3')}</li>
+                        <li>{t('share4')}</li>
+                        <li>{t('share5')}</li>
+                        <li>{t('share6')}</li>
+                    </ul>
+                </div>
+            </div>
+
             <div className={styles.tableWrapper}>
                 <div className={styles.tblHeader}>
                     <table cellPadding="0" cellSpacing="0" border="0">
@@ -128,17 +143,17 @@ const PricingTable = () => {
                                         title
                                     } = data?.attributes;
 
+                                    const localizedTitles = {};
+                                    localizations?.data?.forEach((loc) => {
+                                        const { locale, title } = loc.attributes;
+                                        localizedTitles[locale] = title;
+                                    });
+
                                     return (
                                         <tr key={index}>
-                                            {localizations?.data?.map((loc, index) => {
-                                                const { title: titleEn } = loc.attributes;
-                                                return (
-                                                    <td className={styles.imperial} key={index}>
-                                                        {getLocalizedText(language, titleEn, title)}
-                                                    </td>
-                                                )
-                                            }
-                                            )}
+                                            <td className={styles.imperial}>
+                                                {getLocalizedText(language, localizedTitles.en, title, localizedTitles.ru)}
+                                            </td>
                                             <td>
                                                 <p>{time1}</p>
                                                 <p>{time2}</p>
@@ -172,17 +187,17 @@ const PricingTable = () => {
                                         title
                                     } = data?.attributes;
 
+                                    const localizedTitles = {};
+                                    localizations?.data?.forEach((loc) => {
+                                        const { locale, title } = loc.attributes;
+                                        localizedTitles[locale] = title;
+                                    });
+
                                     return (
                                         <tr key={index}>
-                                            {localizations?.data?.map((loc, index) => {
-                                                const { title: titleEn } = loc.attributes;
-                                                return (
-                                                    <td className={styles.imperial} key={index}>
-                                                        {getLocalizedText(language, titleEn, title)}
-                                                    </td>
-                                                )
-                                            }
-                                            )}
+                                            <td className={styles.imperial}>
+                                                {getLocalizedText(language, localizedTitles.en, title, localizedTitles.ru)}
+                                            </td>
                                             <td>
                                                 <p>{time1}</p>
                                                 <p>{time2}</p>

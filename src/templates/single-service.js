@@ -56,6 +56,12 @@ const SingleService = ({ data }) => {
 
   const img = image?.data?.attributes?.url
 
+  const localizedData = {};
+  localizations?.data?.forEach((loc) => {
+    const { locale, text, title, point1, point2, point3, point4, point5, point6, point7, point8, point9 } = loc.attributes;
+    localizedData[locale] = { text, title, point1, point2, point3, point4, point5, point6, point7, point8, point9 };
+  });
+
   return (
     <>
       <Seo title={isFetchedServiceNew ? fetchedServices?.attributes?.title : seoTitle} description={isFetchedServiceNew ? fetchedServices?.attributes?.description : seoDescription} />
@@ -72,134 +78,134 @@ const SingleService = ({ data }) => {
           />
           <div className={styles.imageWrapper}>
           </div>
-          {localizations?.data?.map((loc, index) => {
-            const { title: titleEn, text: textEn, point1: point1En, point2: point2En, point3: point3En, point4: point4En, point5: point5En, point6: point6En, point7: point7En, point8: point8En, point9: point9En } = loc?.attributes;
-            return (
-              <React.Fragment key={index}>
-                <p className={styles.title}>
-                  {getLocalizedText(language, titleEn, title)}
-                </p>
+          <React.Fragment>
+            <p className={styles.title}>
+              {getLocalizedText(language, localizedData.en.title, title, localizedData.ru.title)}
+            </p>
 
-                {isFetchedServiceNew ?
-                  <>
-                    <div className={styles.pricingTable}>
-                      <table className={styles.table}>
-                        <tbody>
-                          {fetchedServices?.attributes?.time1 && <tr className={styles.row}>
-                            <td className={styles.cell}>
-                              <div className={styles.tableTitle}>{fetchedServices?.attributes?.time1}</div>
-                            </td>
-                            {fetchedServices?.attributes?.girl1time1price && <td className={styles.cell}>
-                              <div className={styles.girls}>1 girl</div>
-                              <div className={styles.price}>{fetchedServices?.attributes?.girl1time1price}</div>
-                            </td>}
-                            {fetchedServices?.attributes?.girl2time1price && <td className={styles.cell}>
-                              <div className={styles.girls}>2 girls</div>
-                              <div className={styles.price}>{fetchedServices?.attributes?.girl2time1price && fetchedServices?.attributes?.girl2time1price}</div>
-                            </td>}
-                          </tr>}
+            {isFetchedServiceNew ?
+              <>
+                <div className={styles.pricingTable}>
+                  <table className={styles.table}>
+                    <tbody>
+                      {fetchedServices?.attributes?.time1 && <tr className={styles.row}>
+                        <td className={styles.cell}>
+                          <div className={styles.tableTitle}>{fetchedServices?.attributes?.time1}</div>
+                        </td>
+                        {fetchedServices?.attributes?.girl1time1price && <td className={styles.cell}>
+                          <div className={styles.girls}>1 girl</div>
+                          <div className={styles.price}>{fetchedServices?.attributes?.girl1time1price}</div>
+                        </td>}
+                        {fetchedServices?.attributes?.girl2time1price && <td className={styles.cell}>
+                          <div className={styles.girls}>2 girls</div>
+                          <div className={styles.price}>{fetchedServices?.attributes?.girl2time1price && fetchedServices?.attributes?.girl2time1price}</div>
+                        </td>}
+                      </tr>}
 
-                          {fetchedServices?.attributes?.time2 && <tr className={styles.row}>
-                            <td className={styles.cell}>
-                              <div className={styles.tableTitle}>{fetchedServices?.attributes?.time2}</div>
-                            </td>
-                            {fetchedServices?.attributes?.girl1time2price && <td className={styles.cell}>
-                              <div className={styles.girls}>1 girl</div>
-                              <div className={styles.price}>{fetchedServices?.attributes?.girl1time2price && fetchedServices?.attributes?.girl1time2price}</div>
-                            </td>}
-                            {fetchedServices?.attributes?.girl2time2price && <td className={styles.cell}>
-                              <div className={styles.girls}>2 girls</div>
-                              <div className={styles.price}>{fetchedServices?.attributes?.girl2time2price && fetchedServices?.attributes?.girl2time2price}</div>
-                            </td>}
-                          </tr>}
+                      {fetchedServices?.attributes?.time2 && <tr className={styles.row}>
+                        <td className={styles.cell}>
+                          <div className={styles.tableTitle}>{fetchedServices?.attributes?.time2}</div>
+                        </td>
+                        {fetchedServices?.attributes?.girl1time2price && <td className={styles.cell}>
+                          <div className={styles.girls}>1 girl</div>
+                          <div className={styles.price}>{fetchedServices?.attributes?.girl1time2price && fetchedServices?.attributes?.girl1time2price}</div>
+                        </td>}
+                        {fetchedServices?.attributes?.girl2time2price && <td className={styles.cell}>
+                          <div className={styles.girls}>2 girls</div>
+                          <div className={styles.price}>{fetchedServices?.attributes?.girl2time2price && fetchedServices?.attributes?.girl2time2price}</div>
+                        </td>}
+                      </tr>}
 
-                          {fetchedServices?.attributes?.time3 && <tr className={styles.row}>
-                            <td className={styles.cell}>
-                              <div className={styles.tableTitle}>{fetchedServices?.attributes?.time3}</div>
-                            </td>
-                            {fetchedServices?.attributes?.girl1time3price && <td className={styles.cell}>
-                              <div className={styles.girls}>1 girl</div>
-                              <div className={styles.price}>{fetchedServices?.attributes?.girl1time3price && fetchedServices?.attributes?.girl1time3price}</div>
-                            </td>}
-                            {fetchedServices?.attributes?.girl2time3price && <td className={styles.cell}>
-                              <div className={styles.girls}>2 girls</div>
-                              <div className={styles.price}>{fetchedServices?.attributes?.girl2time3price && fetchedServices?.attributes?.girl2time3price}</div>
-                            </td>}
-                          </tr>}
+                      {fetchedServices?.attributes?.time3 && <tr className={styles.row}>
+                        <td className={styles.cell}>
+                          <div className={styles.tableTitle}>{fetchedServices?.attributes?.time3}</div>
+                        </td>
+                        {fetchedServices?.attributes?.girl1time3price && <td className={styles.cell}>
+                          <div className={styles.girls}>1 girl</div>
+                          <div className={styles.price}>{fetchedServices?.attributes?.girl1time3price && fetchedServices?.attributes?.girl1time3price}</div>
+                        </td>}
+                        {fetchedServices?.attributes?.girl2time3price && <td className={styles.cell}>
+                          <div className={styles.girls}>2 girls</div>
+                          <div className={styles.price}>{fetchedServices?.attributes?.girl2time3price && fetchedServices?.attributes?.girl2time3price}</div>
+                        </td>}
+                      </tr>}
 
-                        </tbody>
-                      </table>
-                    </div>
-                  </>
-                  :
-                  <>
-                    <div className={styles.pricingTable}>
-                      <table className={styles.table}>
-                        <tbody>
-                          {time1 && <tr className={styles.row}>
-                            <td className={styles.cell}>
-                              <div className={styles.tableTitle}>{time1}</div>
-                            </td>
-                            {girl1time1price && <td className={styles.cell}>
-                              <div className={styles.girls}>1 girl</div>
-                              <div className={styles.price}>{girl1time1price}</div>
-                            </td>}
-                            {girl2time1price && <td className={styles.cell}>
-                              <div className={styles.girls}>2 girls</div>
-                              <div className={styles.price}>{girl2time1price && girl2time1price}</div>
-                            </td>}
-                          </tr>}
-
-                          {time2 && <tr className={styles.row}>
-                            <td className={styles.cell}>
-                              <div className={styles.tableTitle}>{time2}</div>
-                            </td>
-                            {girl1time2price && <td className={styles.cell}>
-                              <div className={styles.girls}>1 girl</div>
-                              <div className={styles.price}>{girl1time2price && girl1time2price}</div>
-                            </td>}
-                            {girl2time2price && <td className={styles.cell}>
-                              <div className={styles.girls}>2 girls</div>
-                              <div className={styles.price}>{girl2time2price && girl2time2price}</div>
-                            </td>}
-                          </tr>}
-
-                          {time3 && <tr className={styles.row}>
-                            <td className={styles.cell}>
-                              <div className={styles.tableTitle}>{time3}</div>
-                            </td>
-                            {girl1time3price && <td className={styles.cell}>
-                              <div className={styles.girls}>1 girl</div>
-                              <div className={styles.price}>{girl1time3price && girl1time3price}</div>
-                            </td>}
-                            {girl2time3price && <td className={styles.cell}>
-                              <div className={styles.girls}>2 girls</div>
-                              <div className={styles.price}>{girl2time3price && girl2time3price}</div>
-                            </td>}
-                          </tr>}
-
-                        </tbody>
-                      </table>
-                    </div>
-                  </>
-                }
-                <p className={styles.description}>{getLocalizedText(language, textEn, text)}</p>
-                <div className={styles.ulWrapper}>
-                  <ul className={styles.serviceList}>
-                    {point1 && <li className={styles.liText}>{getLocalizedText(language, point1En, point1)}</li>}
-                    {point2 && <li className={styles.liText}>{getLocalizedText(language, point2En, point2)}</li>}
-                    {point3 && <li className={styles.liText}>{getLocalizedText(language, point3En, point3)}</li>}
-                    {point4 && <li className={styles.liText}>{getLocalizedText(language, point4En, point4)}</li>}
-                    {point5 && <li className={styles.liText}>{getLocalizedText(language, point5En, point5)}</li>}
-                    {point6 && <li className={styles.liText}>{getLocalizedText(language, point6En, point6)}</li>}
-                    {point7 && <li className={styles.liText}>{getLocalizedText(language, point7En, point7)}</li>}
-                    {point8 && <li className={styles.liText}>{getLocalizedText(language, point8En, point8)}</li>}
-                    {point9 && <li className={styles.liText}>{getLocalizedText(language, point9En, point9)}</li>}
-                  </ul>
+                    </tbody>
+                  </table>
                 </div>
-              </React.Fragment>
-            )
-          })}
+              </>
+              :
+              <>
+                <div className={styles.pricingTable}>
+                  <table className={styles.table}>
+                    <tbody>
+                      {time1 && <tr className={styles.row}>
+                        <td className={styles.cell}>
+                          <div className={styles.tableTitle}>{time1}</div>
+                        </td>
+                        {girl1time1price && <td className={styles.cell}>
+                          <div className={styles.girls}>1 girl</div>
+                          <div className={styles.price}>{girl1time1price}</div>
+                        </td>}
+                        {girl2time1price && <td className={styles.cell}>
+                          <div className={styles.girls}>2 girls</div>
+                          <div className={styles.price}>{girl2time1price && girl2time1price}</div>
+                        </td>}
+                      </tr>}
+
+                      {time2 && <tr className={styles.row}>
+                        <td className={styles.cell}>
+                          <div className={styles.tableTitle}>{time2}</div>
+                        </td>
+                        {girl1time2price && <td className={styles.cell}>
+                          <div className={styles.girls}>1 girl</div>
+                          <div className={styles.price}>{girl1time2price && girl1time2price}</div>
+                        </td>}
+                        {girl2time2price && <td className={styles.cell}>
+                          <div className={styles.girls}>2 girls</div>
+                          <div className={styles.price}>{girl2time2price && girl2time2price}</div>
+                        </td>}
+                      </tr>}
+
+                      {time3 && <tr className={styles.row}>
+                        <td className={styles.cell}>
+                          <div className={styles.tableTitle}>{time3}</div>
+                        </td>
+                        {girl1time3price && <td className={styles.cell}>
+                          <div className={styles.girls}>1 girl</div>
+                          <div className={styles.price}>{girl1time3price && girl1time3price}</div>
+                        </td>}
+                        {girl2time3price && <td className={styles.cell}>
+                          <div className={styles.girls}>2 girls</div>
+                          <div className={styles.price}>{girl2time3price && girl2time3price}</div>
+                        </td>}
+                      </tr>}
+
+                    </tbody>
+                  </table>
+                </div>
+              </>
+            }
+            <p className={styles.description}>
+              {getLocalizedText(language, localizedData.en.text, text, localizedData.ru.text)}
+
+            </p>
+            <div className={styles.ulWrapper}>
+              <ul className={styles.serviceList}>
+                {point1 && <li className={styles.liText}>{getLocalizedText(language, localizedData.en.point1, point1, localizedData.ru.point1)}</li>}
+                {point2 && <li className={styles.liText}>{getLocalizedText(language, localizedData.en.point2, point2, localizedData.ru.point2)}</li>}
+                {point3 && <li className={styles.liText}>{getLocalizedText(language, localizedData.en.point3, point3, localizedData.ru.point3)}</li>}
+                {point4 && <li className={styles.liText}>{getLocalizedText(language, localizedData.en.point4, point4, localizedData.ru.point4)}</li>}
+                {point5 && <li className={styles.liText}>{getLocalizedText(language, localizedData.en.point5, point5, localizedData.ru.point5)}</li>}
+                {point6 && <li className={styles.liText}>{getLocalizedText(language, localizedData.en.point6, point6, localizedData.ru.point6)}</li>}
+                {point7 && <li className={styles.liText}>{getLocalizedText(language, localizedData.en.point7, point7, localizedData.ru.point7)}</li>}
+                {point8 && <li className={styles.liText}>{getLocalizedText(language, localizedData.en.point8, point8, localizedData.ru.point8)}</li>}
+                {point9 && <li className={styles.liText}>{getLocalizedText(language, localizedData.en.point9, point9, localizedData.ru.point9)}</li>}
+              </ul>
+            </div>
+          </React.Fragment>
+          {/* ) */}
+          {/* // })} */}
         </div>
       </div >
     </>
@@ -249,6 +255,7 @@ export const query = graphql`
               localizations {
                 data {
                   attributes {
+                    locale
                     text
                     title
                     point1

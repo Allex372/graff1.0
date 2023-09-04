@@ -23,6 +23,12 @@
     margin-bottom: 16px;
 }
 
+.videoWrapper {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+}
+
 .infoImgWrapper {
     height: auto;
     max-width: 400px;
@@ -37,7 +43,7 @@
 .textWrapper {
     width: 50%;
     padding-right: 16px;
-    padding-left: 16px;
+    padding-left: 32px;
 }
 
 .descriptionTitle {

@@ -57,6 +57,12 @@ const SwiperCarousel = ({ array, isService, isInterier, isModels }) => {
                 {array?.map((service) => {
                     const { title, image, localizations, category, url } = service.attributes;
 
+                    const localizedTitles = {};
+                    localizations?.data?.forEach((loc) => {
+                        const { locale, title } = loc.attributes;
+                        localizedTitles[locale] = title;
+                    });
+
                     return (
                         <SwiperSlide className={styles.swiperSlide} key={service.id}>
                             <div className={styles.cardWrapper}>
@@ -68,15 +74,9 @@ const SwiperCarousel = ({ array, isService, isInterier, isModels }) => {
                                         className={styles.image}
                                     />
                                 </div>
-                                {localizations.data.map((loc, index) => {
-                                    const { title: titleEn } = loc.attributes
-                                    return (
-                                        <p className={styles.title} key={index}>
-                                            {getLocalizedText(language, titleEn, title)}
-                                        </p>
-                                    )
-                                }
-                                )}
+                                <p className={styles.title}>
+                                    {getLocalizedText(language, localizedTitles.en, title, localizedTitles.ru)}
+                                </p>
                                 <div onClick={() => handleScroll()}>
                                     <Link to={`/${category}/${url}`} className={styles.link}>{t('readMore')} -&gt;</Link>
                                 </div>
@@ -118,7 +118,6 @@ const SwiperCarousel = ({ array, isService, isInterier, isModels }) => {
             className={styles.swiperContainer}
         >
             {array?.map((image, id) => {
-                // console.log(data);
                 return (
                     <SwiperSlide key={id} className={styles.swiperSlide}>
                         <img

@@ -30,6 +30,7 @@ exports.createPages = async ({ actions, graphql }) => {
             rest {
               aboutMassages(pagination: {limit: 1000}) {
                 data {
+                    id
                     attributes {                    
                         url
                     }
@@ -40,11 +41,11 @@ exports.createPages = async ({ actions, graphql }) => {
     )
 
     AboutMassages?.rest?.aboutMassages?.data?.forEach(node => {
-        const { url } = node.attributes;
+        const { id, url } = node.attributes;
         actions.createPage({
             path: `about-massages/${url}`,
             component: path.resolve('./src/templates/single-about-massages-card.js'),
-            context: { url }
-        })
+            context: { url, fetchedMassages: AboutMassages?.rest?.aboutMassages?.data, id }
+        });
     });
 }

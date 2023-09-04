@@ -45,6 +45,12 @@
     font-size: 22px;
     line-height: 32px;
     padding: 0 12px 24px 12px;
+    width: 100%;
+    background-color: black;
+}
+
+.description p {
+    padding: 4px;
 }
 
 .ulWrapper {

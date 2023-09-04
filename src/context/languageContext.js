@@ -9,7 +9,13 @@ const LanguageProvider = ({ children }) => {
     const { t, i18n } = useTranslation();
 
     useEffect(() => {
-        setLanguage(i18n.language);
+        localStorage.setItem('language', JSON.stringify('ua'));
+        const currentLanguage = localStorage.getItem('language');
+        const i18Language = i18n.language ? i18n.language : currentLanguage;
+        if (i18Language) {
+            localStorage.setItem('language', JSON.stringify(i18Language));
+        }
+        setLanguage(i18Language);
     }, []);
 
     const changeLanguage = (language) => {
@@ -19,12 +25,20 @@ const LanguageProvider = ({ children }) => {
 
     const setEN = (language) => {
         changeLanguage(language);
-    };
-    const setUA = (language) => {
-        changeLanguage(language);
+        localStorage.setItem('language', JSON.stringify(language));
     };
 
-    return <Context.Provider value={{ language, setEN, setUA, t }}>{children}</Context.Provider>;
+    const setUA = (language) => {
+        changeLanguage(language);
+        localStorage.setItem('language', JSON.stringify(language));
+    };
+
+    const setRU = (language) => {
+        changeLanguage(language);
+        localStorage.setItem('language', JSON.stringify(language));
+    };
+
+    return <Context.Provider value={{ language, setEN, setUA, setRU, t }}>{children}</Context.Provider>;
 }
 
 export default LanguageProvider;

@@ -7,6 +7,7 @@
 
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby";
+// import { useEffect } from 'react';
 
 function Seo({ description, title, children }) {
   const { site } = useStaticQuery(
@@ -25,9 +26,6 @@ function Seo({ description, title, children }) {
 
   const metaDescription = description || site.siteMetadata.description;
   const defaultTitle = site.siteMetadata?.title;
-
-  console.log(title, 'title');
-  console.log(description, 'description');
 
   return (
     <>

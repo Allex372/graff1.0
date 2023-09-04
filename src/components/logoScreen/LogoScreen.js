@@ -12,7 +12,7 @@ import GradientLine from "../GradientLine/GradientLine";
 import * as styles from './logo.module.css';
 
 const LogoScreen = () => {
-    const { language, setEN, setUA } = useLanguage();
+    const { language, setEN, setUA, setRU } = useLanguage();
 
     const [isOpen, setIsOpen] = useState(false);
     const { isMenuClose, setIsMenuClose } = useSideMenuOpen();
@@ -56,6 +56,13 @@ const LogoScreen = () => {
                         onClick={() => setEN('en')}
                     >
                         EN
+                    </span>
+                    <span>/</span>
+                    <span
+                        className={language === 'ru' && `${styles.active}`}
+                        onClick={() => setRU('ru')}
+                    >
+                        RU
                     </span>
                 </div>
                 <div className={styles.iconContentWrapper}>
@@ -117,6 +124,11 @@ const LogoScreen = () => {
                                         <i class="fas fa-phone fa-lg"></i>
                                         <span>+380969116400</span>
                                     </a>
+
+                                    <Link to={`https://www.google.com/maps/place/${address}`} target="_blank">
+                                        <i class="fas fa-street-view fa-lg"></i>
+                                        <span>Саксаганського 5</span>
+                                    </Link>
 
                                     <a href="https://t.me/https://t.me/Graff_Lviv" target='_blank' rel="noreferrer">
                                         <i class="fab fa-telegram fa-lg"></i>

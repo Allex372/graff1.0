@@ -84,7 +84,7 @@ const LogoScreen = () => {
                                 <span>+380969116400</span>
                             </a>
 
-                            <a href="https://t.me/Graff_Lviv" target='_blank' rel="noreferrer">
+                            <a href="https://t.me/+SWD19ATJFm9lNzBi" target='_blank' rel="noreferrer">
                                 <i class="fab fa-telegram fa-lg"></i>
                                 <span>Telegram</span>
                             </a>
